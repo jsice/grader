@@ -15,7 +15,12 @@ class CreateProblemTestSetsTable extends Migration
     {
         Schema::create('problem_test_sets', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('problem_id');
+            $table->string('input_path');
+            $table->string('output_path');
             $table->timestamps();
+            
+            $table->foreign('problem_id')->references('id')->on('problems')->onDelete('cascade');
         });
     }
 

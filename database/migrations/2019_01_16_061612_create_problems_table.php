@@ -15,6 +15,9 @@ class CreateProblemsTable extends Migration
     {
         Schema::create('problems', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
+            $table->string('pdf_path');
+            $table->enum('status', ['show', 'hide']);
             $table->timestamps();
         });
     }

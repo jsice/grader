@@ -15,6 +15,10 @@ class CreateSubmissionsTable extends Migration
     {
         Schema::create('submissions', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('problem_id');
+            $table->string('file_path');
+            $table->enum('status', ['YES', 'NO:TimeLimitExceed', 'NO:CompilationError', 'No:RunTimeError', 'No:WrongAnswer', 'No:ContactTA', 'DELETED']);
             $table->timestamps();
         });
     }
