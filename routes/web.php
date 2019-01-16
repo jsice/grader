@@ -22,3 +22,11 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/scoreboard', function () {
+    return view('scoreboard');
+});
+
+Route::get('/problems', function () {
+    return view('problems');
+});

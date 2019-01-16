@@ -27,25 +27,32 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <div class="container">
         <a href="/" class="navbar-brand" href="#">CSKU GRADER</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav mr-auto">
-
-            </ul>
-            @if(Auth::check())
-            <form action="/logout" method="POST" style="margin: 0px">
-                @csrf
-                <button class="btn btn-danger" value="submit">SIGN OUT</button>
-            </form>
-            @else
-            <a href="/login" class="btn btn-success">SIGN IN</a>
-            @endif
+          <!-- Left Side Of Navbar -->
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/scoreboard">Scoreboard</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/problems">Problems</a>
+            </li>
+          </ul>
+          @if(Auth::check())
+          <form action="/logout" method="POST" style="margin: 0px">
+            @csrf
+            <button class="btn btn-danger" value="submit">SIGN OUT</button>
+          </form>
+          @else
+          <a href="/login" class="btn btn-success">SIGN IN</a>
+          @endif
         </div>
+      </div>
     </nav>
     <main class="container-fluid">
         @yield("content")
