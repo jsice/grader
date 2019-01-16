@@ -23,6 +23,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/problems', 'ProblemsController@index');
+Route::get('/problems/{id}', 'ProblemsController@show');
+Route::put('/problems/{id}', 'ProblemsController@update');
+
+Route::get('/scoreboard', 'ScoreboardController@index');
+
+Route::get('/users', 'UsersController@index');
+Route::get('/users/{id}', 'UsersController@show');
+Route::post('/users', 'UsersController@create');
+
+Route::get('/submissions', 'SubmissionsController@index');
+Route::get('/submissions/{id}', 'SubmissionsController@show');
+
 Route::get('/scoreboard', function () {
     return view('scoreboard');
 });
