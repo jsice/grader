@@ -36,10 +36,3 @@ Route::post('/users', 'UsersController@create');
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show');
 
-Route::get('/scoreboard', function () {
-    return view('scoreboard');
-});
-
-Route::get('/problems', function () {
-    return view('problems');
-});
