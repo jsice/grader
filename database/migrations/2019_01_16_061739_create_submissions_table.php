@@ -18,8 +18,11 @@ class CreateSubmissionsTable extends Migration
             $table->integer('user_id');
             $table->integer('problem_id');
             $table->string('file_path');
-            $table->enum('status', ['YES', 'NO:TimeLimitExceed', 'NO:CompilationError', 'No:RunTimeError', 'No:WrongAnswer', 'No:ContactTA', 'DELETED']);
+            $table->enum('status', ['YES', 'NO:TimeLimitExceed', 'NO:CompilationError', 'No:RunTimeError', 'No:WrongAnswer', 'No:ContactTA', 'DELETED', 'PENDING']);
             $table->timestamps();
+            
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('problem_id')->references('id')->on('problems')->onDelete('cascade');
         });
     }
 

@@ -15,10 +15,13 @@ class CreateProblemsTable extends Migration
     {
         Schema::create('problems', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('admin_id');
             $table->string('name');
             $table->string('pdf_path');
             $table->enum('status', ['show', 'hide']);
             $table->timestamps();
+
+            $table->foreign('admin_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
