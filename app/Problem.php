@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Problem extends Model
 {
     protected $fillable = [
-        'admin_id', 'name', 'pdf_path', 'status'
+        'admin_id', 'name', 'pdf_path', 'time', 'status'
     ];
 
     public function testsets() {

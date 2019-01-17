@@ -8,6 +8,7 @@ $factory->define(App\Problem::class, function (Faker $faker) {
         'admin_id' => $admin->id, 
         'name' => $faker->name, 
         'pdf_path' => 'Cal_I.pdf',
+        'time' => 1,
         'status' => 'show'
     ];
 });
