@@ -27,4 +27,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function submissions() {
+		return $this->hasMany('App\Submission', 'user_id');
+	}
 }

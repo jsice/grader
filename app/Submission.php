@@ -11,10 +11,10 @@ class Submission extends Model
     ];
 
     public function sender() {
-		return $this->belongsTo('App\User', 'user_id');
+		    return $this->belongsTo('App\User', 'user_id');
     }
     
     public function problem() {
-		return $this->belongsTo('App\Problem', 'problem_id');
-	}
+		    return $this->belongsTo('App\Problem', 'problem_id');
+	  }
 }
