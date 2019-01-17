@@ -78,9 +78,9 @@ class SubmissionsController extends Controller
         return view('submissions.show', ['submission' => $submission]);
     }
 
-    public function edit(Submission $submission)
+    public function edit(Submission $submission, $id)
     {
-        return view('submissions.edit', compact('submissions'));
+        return view('submissions.edit', compact('submission', 'id'));
     }
     
     public function update(Request $request, Submission $submission)
