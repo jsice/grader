@@ -25,6 +25,12 @@
     .error-list {
       margin-bottom: 0;
     }
+    .custom-file-label,
+    .custom-file-label::after {
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
   </style>
 @endpush
 @section('title')
