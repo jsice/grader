@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Problem
+use App\Problem;
 
 class ProblemsController extends Controller
 {
