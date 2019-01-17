@@ -30,7 +30,6 @@ Route::delete('/problems/{id}', 'ProblemsController@destroy');
 Route::get('/scoreboard', 'ScoreboardController@index');
 
 Route::get('/users', 'UsersController@index');
-Route::get('/users/{id}', 'UsersController@show');
 Route::get('/users/create', 'UsersController@create');
 Route::post('/users', 'UsersController@store');
 
