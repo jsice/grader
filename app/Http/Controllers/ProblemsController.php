@@ -22,7 +22,7 @@ class ProblemsController extends Controller
         $validatedData = $request->validate([
             'name' => 'required',
             'pdf_file' => 'required',
-        ])
+        ]);
         $problem = new Problem;
         $problem->admin_id = Auth::user()->std_id;
         $problem->name = $request->input('name');
@@ -30,10 +30,9 @@ class ProblemsController extends Controller
         $problem->pdf_path = '' . $request->file('pdf_file')->getClientOriginalName();
         $problem->status = 'show';
         $problem->save();
-        'problem_id', 'input_path', 'output_path'
 
-        $inputFiles=$request->file('input_files')
-        $outputFiles=$request->file('output_files')
+        $inputFiles=$request->file('input_files');
+        $outputFiles=$request->file('output_files');
 
         foreach($inputFiles as $inputFile){
             $testSet = new ProblemTestSet;
