@@ -41,7 +41,7 @@
       </ul>
     </div>
   @endif
-  <form method="post" action="/submissions" enctype="multipart/form-data">
+  <form method="post" action="{{ '/problems/' . $problem->id . '/submit' }}" enctype="multipart/form-data">
   {{ csrf_field() }}
   <div class="form-group row">
     <div class="col-12 file-upload">

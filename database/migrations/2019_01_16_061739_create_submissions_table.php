@@ -17,7 +17,8 @@ class CreateSubmissionsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('problem_id');
-            $table->string('file_path');
+            $table->string('file_path')->nullable();
+            $table->enum('language', ['c', 'cpp', 'java']);
             $table->enum('status', ['YES', 'NO:TimeLimitExceed', 'NO:CompilationError', 'No:RunTimeError', 'No:WrongAnswer', 'No:ContactTA', 'DELETED', 'PENDING']);
             $table->timestamps();
             
