@@ -31,7 +31,7 @@ Problems
         @foreach ($problems as $problem)
             @if ($problem -> status === "show")
               <tr>
-              <td scope="row">{{ $problem -> id }}</td>
+                <td scope="row">{{ $problem -> id }}</td>
                 <td>
                   <a href="{{ 'problems/' . $problem -> id }}">{{ $problem -> name }}</a>
                 </td>
