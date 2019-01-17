@@ -26,28 +26,27 @@
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a href="/" class="navbar-brand" href="#">CSKU GRADER</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarColor03">
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <form action="/scoreboard" method="GET">
-                @csrf
               <a class="nav-link" href="/scoreboard">Scoreboard</a>
-              </form>
             </li>
             <li class="nav-item">
-              <form action="/problems" method="GET">
-                @csrf
                 <a class="nav-link" href="/problems">Problems</a>
-              </form>
             </li>
+            @if (Auth::check() and Auth::user()->type == "admin")
+            <li class="nav-item">
+                <a class="nav-link" href="/users">Users</a>
+            </li>
+            @endif
           </ul>
           @if(Auth::check())
           <form action="/logout" method="POST" style="margin: 0px">

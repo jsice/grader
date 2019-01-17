@@ -10,25 +10,33 @@ class ScoreboardController extends Controller
         $users = \App\User::where('type', 'student')->get();
         $problems = \App\Problem::all();
         $submissions = \App\Submission::where('status', 'YES')->get();
+        $submissions_no = \App\Submission::whereIn('status', array('NO:TimeLimitExceed', 'NO:CompilationError', 'No:RunTimeError', 'No:WrongAnswer', 'No:ContactTA'))->get();
         $scoreboard = array();
         foreach ($users as $user) {
             $scoreboard[$user->id] = array();
             foreach ($problems as $problem) {
-                $scoreboard[$user->id][$problem->id] = 0;
+                $scoreboard[$user->id][$problem->id] = -1;
             }
             $scoreboard[$user->id]['time'] = 'None';
             $scoreboard[$user->id]['total'] = 0;
         }
 
+        foreach ($submissions_no as $submission) {
+            if ($submission->sender->type == 'student') {
+                $scoreboard[$submission->sender->id][$submission->problem_id] = 0;
+            }
+        }
+
+
         foreach ($submissions as $submission) {
             if ($submission->sender->type == 'student') {
-                $scoreboard[$submission->user_id][$submission->problem_id] = 1;
-                if ($scoreboard[$submission->user_id]['time'] != 'None') {
-                    if ($scoreboard[$submission->user_id]['time']->lt($submission->updated_at)) {
-                        $scoreboard[$submission->user_id]['time'] = $submission->updated_at;
+                $scoreboard[$submission->sender->id][$submission->problem_id] = 1;
+                if ($scoreboard[$submission->sender->id]['time'] != 'None') {
+                    if ($scoreboard[$submission->sender->id]['time']->lt($submission->updated_at)) {
+                        $scoreboard[$submission->sender->id]['time'] = $submission->updated_at;
                     }
                 } else {
-                    $scoreboard[$submission->user_id]['time'] = $submission->updated_at;
+                    $scoreboard[$submission->sender->id]['time'] = $submission->updated_at;
                 }
             }
         }
@@ -39,12 +47,15 @@ class ScoreboardController extends Controller
                 }
             }
         }
-        usort($scoreboard, function($item1, $item2) {
+        uasort($scoreboard, function($item1, $item2) {
             return $item1['time'] <=> $item2['time'];
         });
-        usort($scoreboard, function($item1, $item2) {
+        uasort($scoreboard, function($item1, $item2) {
             return $item2['total'] <=> $item1['total'];
         });
+        foreach ($scoreboard as $key => $value) {
+          unset($scoreboard[$key]['time']);
+        }
         return view('scoreboard', compact('scoreboard', 'problems'));
     }
 }

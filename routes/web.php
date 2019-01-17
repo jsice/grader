@@ -23,13 +23,13 @@ Route::get('/problems', 'ProblemsController@index');
 Route::get('/problems/{id}', 'ProblemsController@show');
 Route::get('/problems/create', 'ProblemsController@create');
 Route::post('/problems', 'ProblemsController@store');
+Route::get('/problems/{id}/edit', 'ProblemsController@edit');
 Route::put('/problems/{id}', 'ProblemsController@update');
 Route::delete('/problems/{id}', 'ProblemsController@destroy');
 
 Route::get('/scoreboard', 'ScoreboardController@index');
 
 Route::get('/users', 'UsersController@index');
-Route::get('/users/{id}', 'UsersController@show');
 Route::get('/users/create', 'UsersController@create');
 Route::post('/users', 'UsersController@store');
 
@@ -37,4 +37,6 @@ Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show');
 Route::get('/submissions/create', 'SubmissionsController@create');
 Route::post('/submissions', 'SubmissionsController@store');
+Route::get('/submissions/{id}/edit', 'ProblemsController@edit');
+Route::put('/submissions/{id}', 'ProblemsController@update');
 
