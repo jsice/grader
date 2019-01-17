@@ -19,9 +19,9 @@ Route::redirect('/', '/problems');
 
 Auth::routes();
 
+Route::get('/problems/create', 'ProblemsController@create');
 Route::get('/problems', 'ProblemsController@index');
 Route::get('/problems/{id}', 'ProblemsController@show');
-Route::get('/problems/create', 'ProblemsController@create');
 Route::post('/problems', 'ProblemsController@store');
 Route::get('/problems/{id}/edit', 'ProblemsController@edit');
 Route::put('/problems/{id}', 'ProblemsController@update');
@@ -35,7 +35,7 @@ Route::post('/users', 'UsersController@store');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show');
-Route::get('/submissions/create', 'SubmissionsController@create');
+Route::get('/problems/{id}/submit', 'SubmissionsController@create');
 Route::post('/submissions', 'SubmissionsController@store');
 Route::get('/submissions/{id}/edit', 'ProblemsController@edit');
 Route::put('/submissions/{id}', 'ProblemsController@update');
