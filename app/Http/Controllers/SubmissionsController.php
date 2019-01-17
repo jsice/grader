@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Problem;
+use App\Submission;
+use Illuminate\Support\Facades\Auth;
 
 class SubmissionsController extends Controller
 {
@@ -19,22 +21,49 @@ class SubmissionsController extends Controller
         return view('submissions.create', compact('problem'));
     }
     
-    public function store(Request $request)
+    public function store(Request $request, $id)
     {
-        //  $submission = new Submission;
-        //  $submission->user_id = $request->input('user_id');
-        //  $submission->problem_id = $request->input('problem_id');
-        //  $submission->file_path = $request->input('file_path');
-        //  $submission->status = 'PENDING';
-        //  $submission->save();
         $validatedData = $request->validate([
             'codeFile' => 'required',
             'language' => 'required',
         ]);
-        $codeFile = $request->file('file');
-        $language = $request->input('language');
-        var_dump($codeFile);
-        var_dump($language);
+
+        $codeFile = $request->file('codeFile');
+
+        $submission = new Submission;
+        $submission->user_id = Auth::user()->id;
+        $submission->problem_id = $id;
+        $submission->status = 'PENDING';
+        $submission->language = $request->input('language');
+        $submission->save();
+
+        $fileName = $submission->id . '_' . $id . '_' . Auth::user()->id. '_' . Auth::user()->std_id . '.' . $codeFile->getClientOriginalExtension();
+        $submission->file_path = $fileName;
+        $submission->save();
+
+        //Display File Name
+        echo 'File Name: '.$codeFile->getClientOriginalName();
+        echo '<br>';
+   
+        //Display File Extension
+        echo 'File Extension: '.$codeFile->getClientOriginalExtension();
+        echo '<br>';
+    
+        //Display File Real Path
+        echo 'File Real Path: '.$codeFile->getRealPath();
+        echo '<br>';
+    
+        //Display File Size
+        echo 'File Size: '.$codeFile->getSize();
+        echo '<br>';
+    
+        //Display File Mime Type
+        echo 'File Mime Type: '.$codeFile->getMimeType();
+
+        //Move Uploaded File
+        $destinationPath = 'submissions';
+        $codeFile->storeAs($destinationPath, $fileName);
+
         // return redirect('submissions');
     }
     
