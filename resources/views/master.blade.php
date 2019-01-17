@@ -46,14 +46,17 @@
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/scoreboard">Scoreboard</a>
+              <a class="nav-link" href="/problems">Problems</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/problems">Problems</a>
+              <a class="nav-link" href="/scoreboard">Scoreboard</a>
             </li>
             @if (Auth::check() and Auth::user()->type == "admin")
             <li class="nav-item">
                 <a class="nav-link" href="/users">Users</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/submissions">Submissions</a>
             </li>
             @endif
           </ul>

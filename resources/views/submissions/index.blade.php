@@ -3,11 +3,6 @@
   All Submissions
 @endsection
 @section('content')
-  <?php
-    use Illuminate\Support\Facades\Auth;
-    $user_id = Auth::user()->id;
-    $user_type = Auth::user()->type;
-  ?>
   <table class="table table-hover">
     <thead>
       <tr class="table-dark">
@@ -19,7 +14,7 @@
     </thead>
     <tbody>
       @foreach ($submissions as $submission)
-        @if ($user_type === "admin")
+        @if (Auth::check() && Auth::user()->type === "admin")
           <tr>
             <td scope="row">
               <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
@@ -28,8 +23,8 @@
             <td>{{ $submission -> sender -> name}}</td>
             <td>{{ $submission -> status}}</td>
           </tr>
-        @elseif ($user_type === "student")
-          @if ($submission->user_id === $user_id)
+        @elseif (Auth::check() && Auth::user()->type === "student")
+          @if ($submission->user_id === Auth::user()->id)
             <tr>
               <td scope="row">
                 <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
