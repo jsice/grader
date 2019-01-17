@@ -37,16 +37,10 @@
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <form action="/scoreboard" method="GET">
-                @csrf
               <a class="nav-link" href="/scoreboard">Scoreboard</a>
-              </form>
             </li>
             <li class="nav-item">
-              <form action="/problems" method="GET">
-                @csrf
                 <a class="nav-link" href="/problems">Problems</a>
-              </form>
             </li>
           </ul>
           @if(Auth::check())
