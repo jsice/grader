@@ -31,16 +31,16 @@
         <label class="custom-control-label" for="NO:CompilationError">NO:CompilationError</label>
       </div>
       <div class="row custom-control custom-radio custom-control-inline">
-        <input type="radio" class="custom-control-input" name="status" id="No:RunTimeError" value="No:RunTimeError">
-        <label class="custom-control-label" for="No:RunTimeError">No:RunTimeError</label>
+        <input type="radio" class="custom-control-input" name="status" id="NO:RunTimeError" value="NO:RunTimeError">
+        <label class="custom-control-label" for="NO:RunTimeError">NO:RunTimeError</label>
       </div>
       <div class="row custom-control custom-radio custom-control-inline">
-        <input type="radio" class="custom-control-input" name="status" id="No:WrongAnswer" value="No:WrongAnswer">
-        <label class="custom-control-label" for="No:WrongAnswer">No:WrongAnswer</label>
+        <input type="radio" class="custom-control-input" name="status" id="NO:WrongAnswer" value="NO:WrongAnswer">
+        <label class="custom-control-label" for="NO:WrongAnswer">NO:WrongAnswer</label>
       </div>
       <div class="row custom-control custom-radio custom-control-inline">
-        <input type="radio" class="custom-control-input" name="status" id="No:ContactTA" value="No:ContactTA">
-        <label class="custom-control-label" for="No:ContactTA">No:ContactTA</label>
+        <input type="radio" class="custom-control-input" name="status" id="NO:ContactTA" value="NO:ContactTA">
+        <label class="custom-control-label" for="NO:ContactTA">NO:ContactTA</label>
       </div>
       <div class="row custom-control custom-radio custom-control-inline">
         <input type="radio" class="custom-control-input" name="status" id="DELETED" value="DELETED">
