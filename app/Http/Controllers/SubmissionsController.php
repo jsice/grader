@@ -69,7 +69,7 @@ class SubmissionsController extends Controller
         $destinationPath = 'submissions';
         $codeFile->storeAs($destinationPath, $fileName);
 
-        // return redirect('submissions');
+        return redirect('submissions');
     }
     
     public function show(Submission $submission)
