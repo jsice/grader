@@ -36,11 +36,11 @@ class ProblemsController extends Controller
         $problem = new Problem;
         $problem->admin_id = Auth::user()->id;
         $problem->name = $request->input('name');
-        $request->file('pdfFile')->storeAs('problems',$problem->name);
-        $problem->pdf_path = $problem->name;
+        $problem->pdf_path = $problem->name.'.pdf';
         $problem->time = $request->input('time');
         $problem->status = 'show';
         $problem->save();
+        $request->file('pdfFile')->storeAs("problems/$problem->id/", "$problem->name.pdf");
 
         $inputFiles=$request->file('inputFiles');
         $outputFiles=$request->file('outputFiles');
@@ -52,8 +52,8 @@ class ProblemsController extends Controller
                 $outputName = explode( '.', $outputFile->getClientOriginalName());
                 if ($inputName[0] == $outputName[0]){
                     $testSet->problem_id = $problem->id;
-                    $upload = $inputFile->storeAs('problemtestset',$inputFile->getClientOriginalName());
-                    $upload = $outputFile->storeAs('problemtestset',$outputFile->getClientOriginalName());
+                    $upload = $inputFile->storeAs("problems/$problem->id/problemtestset/",$inputFile->getClientOriginalName());
+                    $upload = $outputFile->storeAs("problems/$problem->id/problemtestset/",$outputFile->getClientOriginalName());
                     $testSet->input_path = '' . $inputFile->getClientOriginalName();
                     $testSet->output_path = '' . $outputFile->getClientOriginalName();
                     $testSet->save();
