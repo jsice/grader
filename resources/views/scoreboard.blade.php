@@ -11,13 +11,13 @@ Scoreboard
     <table class="table table-hover">
       <thead>
         <tr class="table-dark">
-            <th style="text-align: center;">Rank</th>
-            <th style="text-align: center;">ID</th>
-            <th>Name</th>
+            <th class="text-center">Rank</th>
+            <th class="text-center">ID</th>
+            <th class="text-center">Name</th>
             @foreach($problems as $problem)
-            <th style="text-align: center;">{{ $problem->name }}</th>
+            <th class="text-center">{{ $problem->name }}</th>
             @endforeach
-            <th style="text-align: center;">Total</th>
+            <th class="text-center">Total</th>
         </tr>
         </thead>
         <tbody>
@@ -29,11 +29,11 @@ Scoreboard
             $user = \App\User::where('id',$key)->first();
           ?>
           <tr>
-            <td score="row" align="center">{{ $rank }}</td>
-            <td scope="row" align="center">{{ $user->std_id }}</td>
+            <td score="row" class="text-center">{{ $rank }}</td>
+            <td scope="row" class="text-center">{{ $user->std_id }}</td>
             <td scope="row">{{ $user->name }}</td>
             @foreach($scores as $key => $score)
-              <td scope="row" align="center">
+              <td scope="row" class="text-center">
               @if ($key == "total")
                 {{$score}}
               @else
