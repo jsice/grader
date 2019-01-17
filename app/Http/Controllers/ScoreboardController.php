@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\User;
+// use \App\User;
 class ScoreboardController extends Controller
 {
     public function index() {
@@ -26,6 +26,6 @@ class ScoreboardController extends Controller
         // foreach ($userScores as $userScore){
             
         // }
-        return "wow";
+        return $users;
     }
 }
