@@ -37,8 +37,8 @@ Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show')->middleware(['auth', 'is_admin']);
 Route::get('/problems/{id}/submit', 'SubmissionsController@create');
 Route::post('/problems/{id}/submit', 'SubmissionsController@store');
-Route::get('/submissions/{id}/edit', 'ProblemsController@edit')->middleware(['auth', 'is_admin']);
-Route::put('/submissions/{id}', 'ProblemsController@update')->middleware(['auth', 'is_admin']);
+Route::get('/submissions/{id}/edit', 'SubmissionsController@edit')->middleware(['auth', 'is_admin']);
+Route::put('/submissions/{id}', 'SubmissionsController@update')->middleware(['auth', 'is_admin']);
 
 Route::get('{folder}/{filename}', function ($folder, $filename)
 {
