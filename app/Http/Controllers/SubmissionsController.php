@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Problem;
 
 class SubmissionsController extends Controller
 {
@@ -12,9 +13,10 @@ class SubmissionsController extends Controller
         return view('submissions.index', compact('submissions'));
     }
     
-    public function create(Problem $problem)
+    public function create($id)
     {
-         return view('submissions.create', compact('problem'));
+        $problem = Problem::findOrFail($id);
+        return view('submissions.create', compact('problem'));
     }
     
     public function store(Request $request)
@@ -25,7 +27,15 @@ class SubmissionsController extends Controller
         //  $submission->file_path = $request->input('file_path');
         //  $submission->status = 'PENDING';
         //  $submission->save();
-         return redirect('submissions');
+        $validatedData = $request->validate([
+            'codeFile' => 'required',
+            'language' => 'required',
+        ]);
+        $codeFile = $request->file('file');
+        $language = $request->input('language');
+        var_dump($codeFile);
+        var_dump($language);
+        // return redirect('submissions');
     }
     
     public function show(Submission $submission)
