@@ -27,6 +27,9 @@
           justify-content: center;
           align-items: center;
         }
+        .btn {
+          border-radius: 5px;
+        }
     </style>
     @stack("css")
 
