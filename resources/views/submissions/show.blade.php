@@ -27,7 +27,7 @@
 @endpush
 @section('title-button')
   @if (Auth::check() and Auth::user()->type == "admin")
-    <a type="role" class="btn btn-info edit" href="{{ '/submissions/' . $submission -> id . '/create' }}">
+    <a type="role" class="btn btn-info edit" href="{{ '/submissions/' . $submission -> id . '/edit' }}">
         <i class="fa fa-edit"></i>{{" Edit"}}
     </a>
   @endif
