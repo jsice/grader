@@ -61,7 +61,7 @@
     <div class="col-3">
       <div class="form-group">
         <label for="lang-select">Language</label>
-        <select name="language" class="form-control" id="lang-select">
+        <select name="language" class="form-control custom-select" id="lang-select">
           <option value="c">C</option>
           <option value="cpp">C++</option>
           <option value="java">Java</option>
