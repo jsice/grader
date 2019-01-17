@@ -8,6 +8,6 @@ $factory->define(App\Problem::class, function (Faker $faker) {
         'admin_id' => $admin->id, 
         'name' => $faker->name, 
         'pdf_path' => 'Cal_I.pdf',
-        'status' => $faker->randomElement(['show', 'hide'])
+        'status' => 'show'
     ];
 });
