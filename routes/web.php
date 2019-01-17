@@ -35,7 +35,7 @@ Route::post('/users', 'UsersController@store');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show');
-Route::get('/submissions/create', 'SubmissionsController@create');
+Route::get('/problems/{id}/submit', 'SubmissionsController@create');
 Route::post('/submissions', 'SubmissionsController@store');
 Route::get('/submissions/{id}/edit', 'ProblemsController@edit');
 Route::put('/submissions/{id}', 'ProblemsController@update');
