@@ -16,6 +16,7 @@ class SubmissionsTableSeeder extends Seeder
             $submit->user_id = \App\User::all()->random()->id;
             $submit->problem_id = \App\Problem::all()->random()->id;
             $submit->file_path = 'test.java';
+            $submit->language = 'java';
             $submit->status = 'YES';
             $submit->save();
             sleep(1);
