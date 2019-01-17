@@ -19,9 +19,9 @@ Problems
     </a>
 @endsection
 @section('content')
-    <table class="table">
+    <table class="table table-hover">
       <thead>
-        <tr>
+        <tr class="table-dark">
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Submission</th>
