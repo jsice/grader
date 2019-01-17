@@ -21,6 +21,11 @@
         main {
             margin-top: 80px;
         }
+        .col-2.title-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
     </style>
     @stack("css")
 
@@ -56,7 +61,14 @@
     </nav>
     <main class="container-fluid">
       <div class="container">
-        <h3 class="display-4">@yield("title")</h3>
+        <div class="row">
+          <div class="col-10">
+            <h3 class="display-4">@yield("title")</h3>
+          </div>
+          <div class="col-2 title-button">
+            @yield("title-button")
+          </div>
+        </div>
         <hr>
         <div class="container">
         @yield("content")
