@@ -12,9 +12,9 @@ class SubmissionsController extends Controller
         return view('submissions.index', compact('submissions'));
     }
     
-    public function create()
+    public function create(Problem $problem)
     {
-         return view('submissions.create');
+         return view('submissions.create', compact('problem'));
     }
     
     public function store(Request $request)
