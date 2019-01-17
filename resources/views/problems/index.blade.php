@@ -38,7 +38,6 @@ Problems
                 <td style="color: green;">{{ $problem -> status }}</td>
               </tr>
             @endif
-            <p>{{$problem}}</p>
         @endforeach
       </tbody>
     </table>
