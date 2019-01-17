@@ -18,6 +18,13 @@ class UsersTableSeeder extends Seeder
         $admin->type = 'admin';
         $admin->std_id = '5810400051';
         $admin->save();
+        $admin = new App\User;
+        $admin->password = bcrypt('userpassword');
+        $admin->name = 'ice2';
+        $admin->email = 'user@ku.th';
+        $admin->type = 'student';
+        $admin->std_id = '6010400051';
+        $admin->save();
         factory(App\User::class, 50)->create();
     }
 }
