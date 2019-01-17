@@ -45,6 +45,6 @@ class ScoreboardController extends Controller
         usort($scoreboard, function($item1, $item2) {
             return $item2['total'] <=> $item1['total'];
         });
-        return view('scoreboard', compact('scoreboard'));
+        return view('scoreboard', compact('scoreboard', 'problems'));
     }
 }
