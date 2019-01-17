@@ -30,8 +30,8 @@ Problems
         </tr>
       </thead>
       <tbody>
-        @foreach ($problems as $problem)
-            @if ($problem -> status === "show")
+        @if (Auth::check() and Auth::user()->type == "admin")
+          @foreach ($problems as $problem)
               <tr>
                 <td scope="row">{{ $problem -> id }}</td>
                 <td>
@@ -39,8 +39,20 @@ Problems
                 </td>
                 <td style="color: green;">{{ $problem -> status }}</td>
               </tr>
-            @endif
-        @endforeach
+          @endforeach
+        @else
+          @foreach ($problems as $problem)
+              @if ($problem -> status === "show")
+                <tr>
+                  <td scope="row">{{ $problem -> id }}</td>
+                  <td>
+                    <a href="{{ 'problems/' . $problem -> id }}">{{ $problem -> name }}</a>
+                  </td>
+                  <td style="color: green;">{{ $problem -> status }}</td>
+                </tr>
+              @endif
+          @endforeach
+        @endif
       </tbody>
     </table>
 @endsection
