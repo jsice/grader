@@ -72,9 +72,10 @@ class SubmissionsController extends Controller
         return redirect('submissions');
     }
     
-    public function show(Submission $submission)
+    public function show($id)
     {
-        return view('submissions.show', compact('submissions'));
+        $submission = Submission::findOrFail($id);
+        return view('submissions.show', ['submission' => $submission]);
     }
 
     public function edit(Submission $submission)
