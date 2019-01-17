@@ -25,7 +25,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/problems', 'ProblemsController@index');
 Route::get('/problems/{id}', 'ProblemsController@show');
+Route::post('/problems', 'ProblemsController@create');
 Route::put('/problems/{id}', 'ProblemsController@update');
+Route::delete('/problems/{id}', 'ProblemsController@delete');
 
 Route::get('/scoreboard', 'ScoreboardController@index');
 
