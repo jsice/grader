@@ -1,5 +1,7 @@
-@extends('layouts.app')
-
+@extends('master')
+@section('title')
+Problems
+@endsection
 @section('content')
-    {{ $users }}
+    {{ $problems }}
 @endsection

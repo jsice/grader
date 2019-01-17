@@ -61,7 +61,13 @@
       </div>
     </nav>
     <main class="container-fluid">
+      <div class="container">
+        <h3 class="display-4">@yield("title")</h3>
+        <hr>
+        <div class="container">
         @yield("content")
+        </div>
+      </div>
     </main>
 
     <script src="{{ asset('js/app.js') }}" defer></script>

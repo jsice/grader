@@ -23,7 +23,7 @@ class UsersController extends Controller
          $user->name = $request->input('name');
          $user->password = bcrypt($request->input('password'));
          $user->email = $request->input('email');
-         $user->role = $request->input('role');
+         $user->type = $request->input('type');
          $user->save();
          return redirect('admin/users/' . $user->id);
     }
