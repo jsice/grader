@@ -7,6 +7,6 @@ $factory->define(App\Submission::class, function (Faker $faker) {
         'user_id' => \App\User::all()->random(), 
         'problem_id' => \App\Problem::all()->random(), 
         'file_path' => 'mock.java', 
-        'status' => 'PENDING'
+        'status' => $faker->randomElement(['YES', 'NO:TimeLimitExceed', 'NO:CompilationError', 'No:RunTimeError', 'No:WrongAnswer', 'No:ContactTA'])
     ];
 });

@@ -18,6 +18,6 @@ class UsersTableSeeder extends Seeder
         $admin->type = 'admin';
         $admin->std_id = '5810400051';
         $admin->save();
-        factory(App\User::class, 3)->create();
+        factory(App\User::class, 50)->create();
     }
 }

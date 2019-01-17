@@ -20,12 +20,10 @@ class SubmissionsTableSeeder extends Seeder
             $submit->save();
             sleep(1);
         }
-        
-        $submit = new App\Submission;
-        $submit->user_id = \App\User::all()->random()->id;
-        $submit->problem_id = \App\Problem::all()->random()->id;
-        $submit->file_path = 'test2.java';
-        $submit->status = 'No:WrongAnswer';
-        $submit->save();
+
+        for ($i=0; $i < 100; $i++) { 
+            factory(App\Submission::class, 1)->create();
+            sleep(0.1);
+        }
     }
 }
