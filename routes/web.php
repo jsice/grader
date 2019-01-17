@@ -25,16 +25,20 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/problems', 'ProblemsController@index');
 Route::get('/problems/{id}', 'ProblemsController@show');
-Route::post('/problems', 'ProblemsController@create');
+Route::get('/problems/create', 'ProblemsController@create');
+Route::post('/problems', 'ProblemsController@store');
 Route::put('/problems/{id}', 'ProblemsController@update');
-Route::delete('/problems/{id}', 'ProblemsController@delete');
+Route::delete('/problems/{id}', 'ProblemsController@destroy');
 
 Route::get('/scoreboard', 'ScoreboardController@index');
 
 Route::get('/users', 'UsersController@index');
 Route::get('/users/{id}', 'UsersController@show');
-Route::post('/users', 'UsersController@create');
+Route::get('/users/create', 'UsersController@create');
+Route::post('/users', 'UsersController@store');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show');
+Route::get('/submissions/create', 'SubmissionsController@create');
+Route::post('/submissions', 'SubmissionsController@store');
 
