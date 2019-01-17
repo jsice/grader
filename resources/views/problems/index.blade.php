@@ -14,7 +14,7 @@ Problems
     </style>
 @endpush
 @section('title-button')
-    <a type="role" class="btn btn-success add-problem" href="#">
+    <a type="role" class="btn btn-success add-problem" href="/problems/create">
         <i class="fa fa-plus"></i>{{" Problem"}}
     </a>
 @endsection

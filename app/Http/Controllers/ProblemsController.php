@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Problem;
+use Illuminate\Support\Facades\Auth;
 
 class ProblemsController extends Controller
 {
@@ -17,6 +18,11 @@ class ProblemsController extends Controller
         return view('problems.show', ['problem' => $problem]);
     }
 
+    public function create()
+    {
+        return view('problems.create');
+    }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
@@ -26,13 +32,13 @@ class ProblemsController extends Controller
         $problem = new Problem;
         $problem->admin_id = Auth::user()->std_id;
         $problem->name = $request->input('name');
-        $request->file('pdf_file')->storeAs('',$request->file('pdf_file')->getClientOriginalName());
-        $problem->pdf_path = '' . $request->file('pdf_file')->getClientOriginalName();
+        $upload = $request->file('pdfFile')->storeAs('',$problem->name);
+        $problem->pdf_path = '' . $problem->name;
         $problem->status = 'show';
         $problem->save();
 
-        $inputFiles=$request->file('input_files');
-        $outputFiles=$request->file('output_files');
+        $inputFiles=$request->file('inputFiles');
+        $outputFiles=$request->file('outputFiles');
 
         foreach($inputFiles as $inputFile){
             $testSet = new ProblemTestSet;
@@ -41,8 +47,8 @@ class ProblemsController extends Controller
                 $outputName = explode( '.', $outputFile->getClientOriginalName());
                 if ($inputName[0] == $outputName[0]){
                     $testSet->problem_id = $problem->id;
-                    $inputFile->storeAs('',$inputFile->getClientOriginalName());
-                    $outputFile->storeAs('',$outputFile->getClientOriginalName());
+                    $upload = $inputFile->storeAs('',$inputFile->getClientOriginalName());
+                    $upload = $outputFile->storeAs('',$outputFile->getClientOriginalName());
                     $testSet->input_path = '' . $inputFile->getClientOriginalName();
                     $testSet->output_path = '' . $outputFile->getClientOriginalName();
                     $testSet->save();
