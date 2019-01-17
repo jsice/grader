@@ -2,6 +2,22 @@
 @section('title')
 Problems
 @endsection
+@push('css')
+    <style>
+        .add-problem {
+            font-size: 18px;
+            border-radius: 5px;
+            line-height: 33px;
+            height: 50px;
+            width: 130px;
+        }
+    </style>
+@endpush
+@section('title-button')
+    <a type="role" class="btn btn-success add-problem" href="#">
+        <i class="fa fa-plus"></i>{{" Problem"}}
+    </a>
+@endsection
 @section('content')
     <table class="table">
       <thead>
@@ -13,7 +29,6 @@ Problems
       </thead>
       <tbody>
         @foreach ($problems as $problem)
-            <p>{{$problem}}</p>
             @if ($problem -> status === "show")
               <tr>
               <td scope="row">{{ $problem -> id }}</td>
@@ -23,6 +38,7 @@ Problems
                 <td style="color: green;">{{ $problem -> status }}</td>
               </tr>
             @endif
+            <p>{{$problem}}</p>
         @endforeach
       </tbody>
     </table>
