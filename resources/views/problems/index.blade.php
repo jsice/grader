@@ -14,9 +14,11 @@ Problems
     </style>
 @endpush
 @section('title-button')
+  @if (Auth::check() and Auth::user()->type == "admin")
     <a type="role" class="btn btn-success add-problem" href="/problems/create">
         <i class="fa fa-plus"></i>{{" Problem"}}
     </a>
+  @endif
 @endsection
 @section('content')
     <table class="table table-hover">
