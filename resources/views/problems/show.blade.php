@@ -24,7 +24,7 @@
     {{ $problem -> name }}
 @endsection
 @section('title-button')
-    <a type="role" class="btn btn-info title-submit" href="#">
+    <a type="role" class="btn btn-info title-submit" href="{{ $problem -> id . '/submit' }}">
         <i class="fa fa-upload"></i>{{" Submit"}}
     </a>
 @endsection
@@ -38,7 +38,7 @@
         >
     </div>
     <div class="col-12 submit-button">
-        <a role="button" class="btn btn-info btn-lg btn-block" href="#">
+        <a role="button" class="btn btn-info btn-lg btn-block" href="{{ $problem -> id . '/submit' }}">
             <i class="fa fa-upload"></i>{{" Submit"}}
         </a>
     </div>
