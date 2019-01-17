@@ -14,28 +14,28 @@
     </thead>
     <tbody>
     @if (Auth::check() && Auth::user()->type === "admin")
-      @foreach ($submissions as $submission)
+      @for ($i = count($submissions)-1; $i >= 0; $i--)
           <tr>
             <td scope="row">
-              <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
+              <a href="{{ 'submissions/' . $submissions[$i] -> id }}">{{ $submissions[$i] -> id }}</a>
             </td>
-            <td>{{ $submission -> problem -> name }}</td>
-            <td>{{ $submission -> sender -> name}}</td>
-            <td>{{ $submission -> status}}</td>
+            <td>{{ $submissions[$i] -> problem -> name }}</td>
+            <td>{{ $submissions[$i] -> sender -> name}}</td>
+            <td>{{ $submissions[$i] -> status}}</td>
           </tr>
             
-      @endforeach
+      @endfor
     @elseif (Auth::check() && Auth::user()->type === "student")
-      @foreach (Auth::user()->submissions as $submission)
+      @for ($i = count($submissions)-1; $i >= 0; $i--)
         <tr>
           <td scope="row">
-            <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
+            <a href="{{ 'submissions/' . $submissions[$i] -> id }}">{{ $submissions[$i] -> id }}</a>
           </td>
-          <td>{{ $submission -> problem -> name }}</td>
-          <td>{{ $submission -> sender -> name}}</td>
-          <td>{{ $submission -> status}}</td>
+          <td>{{ $submissions[$i] -> problem -> name }}</td>
+          <td>{{ $submissions[$i] -> sender -> name}}</td>
+          <td>{{ $submissions[$i] -> status}}</td>
         </tr>
-      @endforeach
+      @endfor
     @endif
     </tbody>
   </table>
