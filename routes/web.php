@@ -19,13 +19,13 @@ Route::redirect('/', '/problems');
 
 Auth::routes();
 
-Route::get('/problems/create', 'ProblemsController@create');
+Route::get('/problems/create', 'ProblemsController@create')->middleware(['auth', 'is_admin']);
 Route::get('/problems', 'ProblemsController@index');
 Route::get('/problems/{id}', 'ProblemsController@show');
-Route::post('/problems', 'ProblemsController@store');
-Route::get('/problems/{id}/edit', 'ProblemsController@edit');
-Route::put('/problems/{id}', 'ProblemsController@update');
-Route::delete('/problems/{id}', 'ProblemsController@destroy');
+Route::post('/problems', 'ProblemsController@store')->middleware(['auth', 'is_admin']);
+Route::get('/problems/{id}/edit', 'ProblemsController@edit')->middleware(['auth', 'is_admin']);
+Route::put('/problems/{id}', 'ProblemsController@update')->middleware(['auth', 'is_admin']);
+Route::delete('/problems/{id}', 'ProblemsController@destroy')->middleware(['auth', 'is_admin']);
 
 Route::get('/scoreboard', 'ScoreboardController@index');
 
@@ -34,11 +34,11 @@ Route::get('/users/create', 'UsersController@create');
 Route::post('/users', 'UsersController@store');
 
 Route::get('/submissions', 'SubmissionsController@index');
-Route::get('/submissions/{id}', 'SubmissionsController@show');
+Route::get('/submissions/{id}', 'SubmissionsController@show')->middleware(['auth', 'is_admin']);
 Route::get('/problems/{id}/submit', 'SubmissionsController@create');
 Route::post('/problems/{id}/submit', 'SubmissionsController@store');
-Route::get('/submissions/{id}/edit', 'ProblemsController@edit');
-Route::put('/submissions/{id}', 'ProblemsController@update');
+Route::get('/submissions/{id}/edit', 'ProblemsController@edit')->middleware(['auth', 'is_admin']);
+Route::put('/submissions/{id}', 'ProblemsController@update')->middleware(['auth', 'is_admin']);
 
 Route::get('{folder}/{filename}', function ($folder, $filename)
 {
