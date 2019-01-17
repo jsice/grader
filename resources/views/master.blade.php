@@ -20,7 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
     <style>
         main {
-            margin-top: 80px;
+            margin-top: 30px;
         }
         .col-2.title-button {
           display: flex;

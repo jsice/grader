@@ -7,7 +7,7 @@ All Users
 @section('content')
 <div class="row">
     <div class="col-10">
-        <h3 class="display-4">Admin</h3>
+        <h3 class="display-4" style="font-size: 2.5rem;">Admin</h3>
     </div>
     <div class="col-2 title-button">
         <a type="role" class="btn btn-success add-problem" href="users/create">
@@ -35,7 +35,7 @@ All Users
     @endforeach
     </tbody>
 </table>
-<h5 class="display-4">Students</h5>
+<h5 class="display-4" style="font-size: 2.5rem;">Students</h5>
 <table class="table table-hover">
     <thead>
     <tr class="table-dark">
