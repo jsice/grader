@@ -18,6 +18,7 @@ class CreateProblemsTable extends Migration
             $table->integer('admin_id');
             $table->string('name');
             $table->string('pdf_path');
+            $table->integer('time');
             $table->enum('status', ['show', 'hide']);
             $table->timestamps();
 

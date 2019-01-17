@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Problem;
 use App\Submission;
 use Illuminate\Support\Facades\Auth;
+use App\Jobs\RunCode;
 
 class SubmissionsController extends Controller
 {
@@ -68,6 +69,8 @@ class SubmissionsController extends Controller
         //Move Uploaded File
         $destinationPath = 'submissions';
         $codeFile->storeAs($destinationPath, $fileName);
+
+        RunCode::dispatch($submission);
 
         return redirect('submissions');
     }

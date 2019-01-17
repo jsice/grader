@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Submission extends Model
 {
     protected $fillable = [
-        'user_id', 'problem_id', 'file_path', 'status'
+        'user_id', 'problem_id', 'language', 'file_path', 'status'
     ];
 
     public function sender() {

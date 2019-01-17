@@ -31,12 +31,14 @@ class ProblemsController extends Controller
             'pdfFile' => 'required',
             'inputFiles' => 'required',
             'outputFiles' => 'required',
+            'time' => 'required',
         ]);
         $problem = new Problem;
         $problem->admin_id = Auth::user()->id;
         $problem->name = $request->input('name');
         $request->file('pdfFile')->storeAs('problems',$problem->name);
         $problem->pdf_path = $problem->name;
+        $problem->time = $request->input('time');
         $problem->status = 'show';
         $problem->save();
 
