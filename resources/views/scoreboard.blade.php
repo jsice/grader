@@ -29,16 +29,16 @@ Scoreboard
             $user = \App\User::where('id',$key)->first();
           ?>
           <tr>
-            <td score="row" class="text-center">{{ $rank }}</td>
-            <td scope="row" class="text-center">{{ $user->std_id }}</td>
-            <td scope="row">{{ $user->name }}</td>
+            <td score="row" class="text-center"><h5>{{ $rank }}</h5></td>
+            <td scope="row" class="text-center"><h6>{{ $user->std_id }}</h6></td>
+            <td scope="row"><h6>{{ $user->name }}</h6></td>
             @foreach($scores as $key => $score)
               <td scope="row" class="text-center">
               @if ($key == "total")
-                {{$score}}
+                <h5>{{$score}}</h5>
               @else
                 @if ($score == -1)
-                -
+                <h6>-</h6>
                 @elseif ($score == 0)
                 <img src="icons/wrong.png" />
                 @elseif ($score == 1)
