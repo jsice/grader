@@ -61,7 +61,7 @@
       Sender
     </div>
     <div class="col-9">
-      {{ $submission->user_id }}
+      {{ $submission->sender->name }}
     </div>
   </div>
   <div class="row">
@@ -72,7 +72,7 @@
       Problem
     </div>
     <div class="col-9">
-      {{ $submission->problem_id }}
+      {{ $submission->problem->name }}
     </div>
   </div>
   <div class="row">
