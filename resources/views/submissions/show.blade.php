@@ -14,7 +14,7 @@
         .col-2, .col-3, .col-9 {
           padding-top: 10px;
           padding-bottom: 10px;
-          font-size: 20px;
+          font-size: 18px;
           display: flex;
         }
         .label {
