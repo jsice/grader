@@ -13,8 +13,8 @@ class UsersController extends Controller
 
     public function index()
     {
-        $students = User::where('type', 'student')->get();
-        $admins = User::where('type', 'admin')->get();
+        $students = User::where('type', 'student')->paginate(10);
+        $admins = User::where('type', 'admin')->paginate(10);
         return view('users.index', compact('students', 'admins'));
     }
     

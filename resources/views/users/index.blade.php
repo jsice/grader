@@ -35,6 +35,7 @@ All Users
     @endforeach
     </tbody>
 </table>
+<div style="display: flex; justify-content: center;">{{ $admins->links() }}</div>
 <h5 class="display-4" style="font-size: 2.5rem;">Students</h5>
 <table class="table table-hover">
     <thead>
@@ -56,4 +57,5 @@ All Users
     @endforeach
     </tbody>
 </table>
+<div style="display: flex; justify-content: center;">{{ $students->links() }}</div>
 @endsection
