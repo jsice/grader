@@ -40,7 +40,8 @@ Create Problem
     <form method="post" action="/problems" enctype="multipart/form-data">
         {{ csrf_field() }}
         <div class="form-group row">
-            Problem Name: <input type="text" name="name"><br>
+            Problem Name: <input type="text" name="name">
+            Time Limit: <input type="text" name="time">
             <div class="col-12 file-upload">
                 <div class="custom-file" id="customFile" lang="es">
                     <input name="pdfFile" type="file" class="custom-file-input" id="upload-pdf-file" aria-describedby="fileHelp" />
