@@ -48,34 +48,34 @@
     </div>
   @endif
   <form method="post" action="{{ '/problems/' . $problem->id . '/submit' }}" enctype="multipart/form-data">
-  {{ csrf_field() }}
-  <div class="form-group row">
-    <div class="col-12 file-upload">
-      <div class="custom-file" id="customFile" lang="es">
-        <input name="codeFile" type="file" class="custom-file-input" id="upload-file" aria-describedby="fileHelp" />
-        <label class="custom-file-label" for="upload-file">
-          Select file...
-        </label>
+    {{ csrf_field() }}
+    <div class="form-group row">
+      <div class="col-12 file-upload">
+        <div class="custom-file" id="customFile" lang="es">
+          <input name="codeFile" type="file" class="custom-file-input" id="upload-file" aria-describedby="fileHelp" />
+          <label class="custom-file-label" for="upload-file">
+            Select file...
+          </label>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label for="lang-select">Language</label>
+          <select name="language" class="form-control custom-select" id="lang-select">
+            <option value="c">C</option>
+            <option value="cpp">C++</option>
+            <option value="java">Java</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-7"></div>
+      <div class="col-1 button cancel">
+        <a role="button" class="btn btn-outline-danger cancel" href="javascript:history.back()">Cancel</a>
+      </div>
+      <div class="col-1 button submit">
+        <button type="submit" class="btn btn-info submit">Submit</button>
       </div>
     </div>
-    <div class="col-3">
-      <div class="form-group">
-        <label for="lang-select">Language</label>
-        <select name="language" class="form-control custom-select" id="lang-select">
-          <option value="c">C</option>
-          <option value="cpp">C++</option>
-          <option value="java">Java</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-7"></div>
-    <div class="col-1 button cancel">
-      <a role="button" class="btn btn-outline-danger cancel" href="javascript:history.back()">Cancel</a>
-    </div>
-    <div class="col-1 button submit">
-      <button type="submit" class="btn btn-info submit">Submit</button>
-    </div>
-  </div>
   </form>
   <script>
     $('#upload-file').change(function(e) {
