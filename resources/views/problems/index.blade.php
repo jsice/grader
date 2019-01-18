@@ -33,11 +33,11 @@ Problems
         @if (Auth::check() and Auth::user()->type == "admin")
           @foreach ($problems as $problem)
               <tr>
-                <td scope="row">{{ $problem -> id }}</td>
+                <td scope="row"><h4>{{ $problem -> id }}</h4></td>
                 <td>
-                  <a href="{{ 'problems/' . $problem -> id }}">{{ $problem -> name }}</a>
+                  <a href="{{ 'problems/' . $problem -> id }}"><h4>{{ $problem -> name }}</h4></a>
                 </td>
-                <td style="color: green;">{{ $problem -> status }}</td>
+                <td><h4 style="color: green;">{{ $problem -> status }}</h4></td>
               </tr>
           @endforeach
         @else
