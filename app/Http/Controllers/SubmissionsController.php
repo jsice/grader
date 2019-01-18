@@ -17,7 +17,7 @@ class SubmissionsController extends Controller
     
     public function index()
     {
-        $submissions = \App\Submission::all();
+        $submissions = Submission::orderBy('id', 'DESC')->paginate(15);
         return view('submissions.index', compact('submissions'));
     }
     

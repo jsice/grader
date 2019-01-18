@@ -14,7 +14,7 @@
     </thead>
     <tbody>
     @if (Auth::check() && Auth::user()->type === "admin")
-      @for ($i = count($submissions)-1; $i >= 0; $i--)
+      @for ($i = 0; $i < count($submissions); $i++)
           <tr>
             <td scope="row">
               <a href="{{ 'submissions/' . $submissions[$i] -> id }}">{{ $submissions[$i] -> id }}</a>
@@ -26,7 +26,7 @@
             
       @endfor
     @elseif (Auth::check() && Auth::user()->type === "student")
-      @for ($i = count($submissions)-1; $i >= 0; $i--)
+      @for ($i = 0; $i < count($submissions); $i++)
         <tr>
           <td scope="row">
             <a href="{{ 'submissions/' . $submissions[$i] -> id }}">{{ $submissions[$i] -> id }}</a>
@@ -39,4 +39,5 @@
     @endif
     </tbody>
   </table>
+  <div style="display: flex; justify-content: center;">{{ $submissions->links() }}</div>
 @endsection
