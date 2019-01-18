@@ -24,7 +24,7 @@
         }
         .col-2.title-button {
           display: flex;
-          justify-content: center;
+          justify-content: flex-end;
           align-items: center;
         }
         .btn {
