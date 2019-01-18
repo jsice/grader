@@ -38,7 +38,7 @@ Scoreboard
                 <h5>{{$score}}</h5>
               @else
                 @if ($score == -1)
-                <h6>-</h6>
+                <h5>-</h5>
                 @elseif ($score == 0)
                 <img src="icons/wrong.png" />
                 @elseif ($score == 1)
