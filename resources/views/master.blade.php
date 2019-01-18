@@ -37,7 +37,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a href="/" class="navbar-brand" href="#">CSKU GRADER</a>
+        <a href="/" class="navbar-brand" style="font-size:1.75vw">CSKU GRADER</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -46,29 +46,27 @@
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/problems">Problems</a>
+              <a class="nav-link" href="/problems" style="font-size:1.25vw">Problems</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/scoreboard">Scoreboard</a>
+              <a class="nav-link" href="/scoreboard" style="font-size:1.25vw">Scoreboard</a>
             </li>
             @if (Auth::check() and Auth::user()->type == "admin")
             <li class="nav-item">
-                <a class="nav-link" href="/users">Users</a>
+                <a class="nav-link" href="/submissions" style="font-size:1.25vw">Submissions</a>
             </li>
-            @endif
-            @if (Auth::check())
             <li class="nav-item">
-                <a class="nav-link" href="/submissions">Submissions</a>
+                <a class="nav-link" href="/users" style="font-size:1.25vw">Users</a>
             </li>
             @endif
           </ul>
           @if(Auth::check())
           <form action="/logout" method="POST" style="margin: 0px">
             @csrf
-            <button class="btn btn-danger" value="submit">SIGN OUT</button>
+            <button class="btn btn-link" value="submit" style="font-size:1.25vw; color:red">SIGN OUT</button>
           </form>
           @else
-          <a href="/login" class="btn btn-success">SIGN IN</a>
+          <a href="/login" class="btn btn-link" style="font-size:1.25vw">SIGN IN</a>
           @endif
         </div>
       </div>
