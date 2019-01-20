@@ -40,6 +40,7 @@
         .nav-link,
         .navbar-brand {
           color: white;
+          font-size:1.15vw;
         }
         .nav-link:hover,
         .navbar-brand:hover {
@@ -68,19 +69,19 @@
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/problems" style="font-size:1vw">Problems</a>
+              <a class="nav-link" href="/problems">Problems</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/scoreboard" style="font-size:1vw">Scoreboard</a>
+              <a class="nav-link" href="/scoreboard">Scoreboard</a>
             </li>
             @if (Auth::check())
             <li class="nav-item">
-              <a class="nav-link" href="/submissions" style="font-size:1vw">Submissions</a>
+              <a class="nav-link" href="/submissions">Submissions</a>
             </li>
             @endif
             @if (Auth::check() and Auth::user()->type == "admin")
             <li class="nav-item">
-              <a class="nav-link" href="/users" style="font-size:1vw">Users</a>
+              <a class="nav-link" href="/users">Users</a>
             </li>
             @endif
           </ul>
