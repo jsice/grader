@@ -52,7 +52,7 @@ class SubmissionsController extends Controller
         $submission->language = $lang;
         $submission->save();
 
-        $fileName = $submission->id . '_' . $id . '_' . Auth::user()->id. '_' . Auth::user()->std_id . '.' . $codeFile->getClientOriginalExtension();
+        $fileName = $submission->id . '_' . $id . '_' . Auth::user()->id. '_' . Auth::user()->std_id . '/' . $codeFile->getClientOriginalName();
         $submission->file_path = $fileName;
         $submission->save();
 
