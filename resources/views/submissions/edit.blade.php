@@ -16,7 +16,7 @@
 @endpush
 @section('content')
   <?php
-    $status_list = ['YES', 'NO:TimeLimitExceed', 'NO:CompilationError', 'NO:RunTimeError', 'NO:WrongAnswer',
+    $status_list = ['YES', 'NO:TimeLimitExceeded', 'NO:CompilationError', 'NO:RunTimeError', 'NO:WrongAnswer',
     'NO:ContactTA', 'DELETED', 'PENDING']
   ?>
   <h3 class="display-4" style="font-size: 2.5rem;">Edit Status</h3>

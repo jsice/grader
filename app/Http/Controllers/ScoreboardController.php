@@ -10,7 +10,7 @@ class ScoreboardController extends Controller
         $users = \App\User::where('type', 'student')->get();
         $problems = \App\Problem::all();
         $submissions = \App\Submission::where('status', 'YES')->get();
-        $submissions_no = \App\Submission::whereIn('status', array('NO:TimeLimitExceed', 'NO:CompilationError', 'NO:RunTimeError', 'NO:WrongAnswer', 'NO:ContactTA'))->get();
+        $submissions_no = \App\Submission::whereIn('status', array('NO:TimeLimitExceeded', 'NO:CompilationError', 'NO:RunTimeError', 'NO:WrongAnswer', 'NO:ContactTA'))->get();
         $scoreboard = array();
         foreach ($users as $user) {
             $scoreboard[$user->id] = array();

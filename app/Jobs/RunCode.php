@@ -66,6 +66,7 @@ class RunCode implements ShouldQueue
                 } else {
                     $this->submission->status = "NO:CompilationError";
                 }
+                shell_exec("del $executable_name.exe $executable_name"."_error.txt $executable_name"."_error2.txt");
             } else if ($lang == 'cpp') {
                 shell_exec("g++ $code_file -o ".$executable_name.".exe 2>".$executable_name."_error.txt");
                 $error = file_get_contents($executable_name."_error.txt");
@@ -87,12 +88,15 @@ class RunCode implements ShouldQueue
                 } else {
                     $this->submission->status = "NO:CompilationError";
                 }
+                shell_exec("del $executable_name.exe $executable_name"."_error.txt $executable_name"."_error2.txt");
             } else if ($lang == 'java') {
-                shell_exec("g++ $code_file -o ".$executable_name.".exe 2>".$executable_name."_error.txt");
+                $code_filename = explode("/", explode(".", $code_file)[0]);
+                $code_filename = $code_filename[count($code_filename)-1];
+                shell_exec("javac $code_file 2>".$executable_name."_error.txt");
                 $error = file_get_contents($executable_name."_error.txt");
                 if (trim($error) == '') {
                     $input = file_get_contents($input_file);
-                    $output = shell_exec($executable_name.".exe <\"$input_file\" 2>".$executable_name."_error2.txt");
+                    $output = shell_exec("java -cp . ".$code_filename." <\"$input_file\" 2>".$executable_name."_error2.txt");
                     $error2 = file_get_contents($executable_name."_error2.txt");
                     if (trim($error2) == '') {
                         $answer = file_get_contents($output_file);
@@ -108,13 +112,15 @@ class RunCode implements ShouldQueue
                 } else {
                     $this->submission->status = "NO:CompilationError";
                 }
+                // shell_exec("del $executable_name.exe $executable_name"."_error.txt $executable_name"."_error2.txt");
             }
-            shell_exec("del $executable_name.exe $executable_name"."_error.txt $executable_name"."_error2.txt");
             if (!$is_yes) {
                 break;
             }
             $cnt = $cnt + 1;
         }
-        $this->submission->save();
+        if ($this->submission->status != "NO:TimeLimitExceeded") {
+            $this->submission->save();
+        }
     }
 }
