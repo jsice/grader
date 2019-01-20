@@ -40,6 +40,26 @@ Route::post('/problems/{id}/submit', 'SubmissionsController@store');
 Route::get('/submissions/{id}/edit', 'SubmissionsController@edit')->middleware(['auth', 'is_admin']);
 Route::put('/submissions/{id}', 'SubmissionsController@update')->middleware(['auth', 'is_admin']);
 
+Route::get('pdf/{folder}/{filename}', function ($folder, $filename)
+{
+    $path = storage_path('app/problems/'.$folder.'/' . $filename);
+    if (!File::exists($path)) {
+        abort(404);
+    }
+    $file = File::get($path);
+    $type = File::mimeType($path);
+    if ($type!=="application/pdf") {
+        abort(403);
+    }
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+
+
+});
+
 Route::get('{folder}/{filename}', function ($folder, $filename)
 {
     $path = storage_path('app/public/'.$folder.'/' . $filename);
@@ -56,3 +76,4 @@ Route::get('{folder}/{filename}', function ($folder, $filename)
 
 
 });
+

@@ -67,9 +67,47 @@ class RunCode implements ShouldQueue
                     $this->submission->status = "NO:CompilationError";
                 }
             } else if ($lang == 'cpp') {
-
+                shell_exec("g++ $code_file -o ".$executable_name.".exe 2>".$executable_name."_error.txt");
+                $error = file_get_contents($executable_name."_error.txt");
+                if (trim($error) == '') {
+                    $input = file_get_contents($input_file);
+                    $output = shell_exec($executable_name.".exe <\"$input_file\" 2>".$executable_name."_error2.txt");
+                    $error2 = file_get_contents($executable_name."_error2.txt");
+                    if (trim($error2) == '') {
+                        $answer = file_get_contents($output_file);
+                        if (trim($answer) == trim($output)) {
+                            $this->submission->status = "YES";
+                            $is_yes = true;
+                        } else {
+                            $this->submission->status = "NO:WrongAnswer";
+                        }
+                    } else {
+                        $this->submission->status = "NO:RunTimeError";
+                    }
+                } else {
+                    $this->submission->status = "NO:CompilationError";
+                }
             } else if ($lang == 'java') {
-
+                shell_exec("g++ $code_file -o ".$executable_name.".exe 2>".$executable_name."_error.txt");
+                $error = file_get_contents($executable_name."_error.txt");
+                if (trim($error) == '') {
+                    $input = file_get_contents($input_file);
+                    $output = shell_exec($executable_name.".exe <\"$input_file\" 2>".$executable_name."_error2.txt");
+                    $error2 = file_get_contents($executable_name."_error2.txt");
+                    if (trim($error2) == '') {
+                        $answer = file_get_contents($output_file);
+                        if (trim($answer) == trim($output)) {
+                            $this->submission->status = "YES";
+                            $is_yes = true;
+                        } else {
+                            $this->submission->status = "NO:WrongAnswer";
+                        }
+                    } else {
+                        $this->submission->status = "NO:RunTimeError";
+                    }
+                } else {
+                    $this->submission->status = "NO:CompilationError";
+                }
             }
             shell_exec("del $executable_name.exe $executable_name"."_error.txt $executable_name"."_error2.txt");
             if (!$is_yes) {
