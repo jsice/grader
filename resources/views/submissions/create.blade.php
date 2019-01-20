@@ -52,7 +52,14 @@
     <div class="form-group row">
       <div class="col-12 file-upload">
         <div class="custom-file" id="customFile" lang="es">
-          <input name="codeFile" type="file" class="custom-file-input" id="upload-file" aria-describedby="fileHelp" />
+          <input
+            name="codeFile"
+            type="file"
+            class="custom-file-input"
+            id="upload-file"
+            aria-describedby="fileHelp"
+            accept=".c"
+          />
           <label class="custom-file-label" for="upload-file">
             Select file...
           </label>
@@ -80,8 +87,11 @@
   <script>
     $('#upload-file').change(function(e) {
       var fileName = e.target.files[0].name;
-      console.log(e.target.files[0])
       $('.custom-file-label').html(fileName);
-    })
+    });
+    $('#lang-select').change(function(e) {
+      var lang = e.target.value;
+      $('#upload-file').attr("accept", "." + lang)
+    });
   </script>
 @endsection

@@ -51,12 +51,14 @@
             <li class="nav-item">
               <a class="nav-link" href="/scoreboard" style="font-size:1.25vw">Scoreboard</a>
             </li>
+            @if (Auth::check())
+            <li class="nav-item">
+              <a class="nav-link" href="/submissions" style="font-size:1.25vw">Submissions</a>
+            </li>
+            @endif
             @if (Auth::check() and Auth::user()->type == "admin")
             <li class="nav-item">
-                <a class="nav-link" href="/submissions" style="font-size:1.25vw">Submissions</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/users" style="font-size:1.25vw">Users</a>
+              <a class="nav-link" href="/users" style="font-size:1.25vw">Users</a>
             </li>
             @endif
           </ul>
