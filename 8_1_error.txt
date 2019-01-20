@@ -1,4 +1,0 @@
-D:\Study\4thYear\2ndSemester\TA_Algo\grader\storage\app\submissions\8_4_1_5810400051.java:3: error: class Solution is public, should be declared in a file named Solution.java
-public class Solution {
-       ^
-1 error
