@@ -18,7 +18,9 @@
           <td scope="row">
             <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
           </td>
-          <td>{{ $submission -> problem -> name }}</td>
+          <td>
+            <a href="{{ './problems/' . $submission -> problem_id }}">{{ $submission -> problem -> name }}</a>
+          </td>
           <td>{{ $submission -> sender -> name}}</td>
           <td>{{ $submission -> status}}</td>
         </tr>
