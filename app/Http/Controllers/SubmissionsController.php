@@ -17,7 +17,11 @@ class SubmissionsController extends Controller
     
     public function index()
     {
-        $submissions = Submission::orderBy('id', 'DESC')->paginate(15);
+        if (Auth::user()->type === "student") {
+            $submissions = Submission::where('user_id', Auth::user()->id)->orderBy('id', 'DESC')->paginate(15);
+        } else if (Auth::user()->type === "admin") {
+            $submissions = Submission::orderBy('id', 'DESC')->paginate(15);
+        }
         return view('submissions.index', compact('submissions'));
     }
     
@@ -30,8 +34,13 @@ class SubmissionsController extends Controller
     public function store(Request $request, $id)
     {
         $validatedData = $request->validate([
-            'codeFile' => 'required',
             'language' => 'required',
+        ]);
+
+        $lang = $request->input('language');
+
+        $validatedData = $request->validate([
+            'codeFile' => 'required|mimes:' . $lang,
         ]);
 
         $codeFile = $request->file('codeFile');
@@ -40,7 +49,7 @@ class SubmissionsController extends Controller
         $submission->user_id = Auth::user()->id;
         $submission->problem_id = $id;
         $submission->status = 'PENDING';
-        $submission->language = $request->input('language');
+        $submission->language = $lang;
         $submission->save();
 
         $fileName = $submission->id . '_' . $id . '_' . Auth::user()->id. '_' . Auth::user()->std_id . '.' . $codeFile->getClientOriginalExtension();

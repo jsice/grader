@@ -13,30 +13,16 @@
       </tr>
     </thead>
     <tbody>
-    @if (Auth::check() && Auth::user()->type === "admin")
-      @for ($i = 0; $i < count($submissions); $i++)
-          <tr>
-            <td scope="row">
-              <a href="{{ 'submissions/' . $submissions[$i] -> id }}">{{ $submissions[$i] -> id }}</a>
-            </td>
-            <td>{{ $submissions[$i] -> problem -> name }}</td>
-            <td>{{ $submissions[$i] -> sender -> name}}</td>
-            <td>{{ $submissions[$i] -> status}}</td>
-          </tr>
-            
-      @endfor
-    @elseif (Auth::check() && Auth::user()->type === "student")
-      @for ($i = 0; $i < count($submissions); $i++)
+      @foreach ($submissions as $submission)
         <tr>
           <td scope="row">
-            <a href="{{ 'submissions/' . $submissions[$i] -> id }}">{{ $submissions[$i] -> id }}</a>
+            <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
           </td>
-          <td>{{ $submissions[$i] -> problem -> name }}</td>
-          <td>{{ $submissions[$i] -> sender -> name}}</td>
-          <td>{{ $submissions[$i] -> status}}</td>
+          <td>{{ $submission -> problem -> name }}</td>
+          <td>{{ $submission -> sender -> name}}</td>
+          <td>{{ $submission -> status}}</td>
         </tr>
-      @endfor
-    @endif
+      @endforeach
     </tbody>
   </table>
   <div style="display: flex; justify-content: center;">{{ $submissions->links() }}</div>
