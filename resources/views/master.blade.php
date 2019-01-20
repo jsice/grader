@@ -30,12 +30,34 @@
         .btn {
           border-radius: 5px;
         }
+        .btn.reg {
+          color: red;
+        }
+        .navbar.navbar-expand-lg {
+          background-color: #20c997 !important;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        .nav-link,
+        .navbar-brand {
+          color: white;
+        }
+        .nav-link:hover,
+        .navbar-brand:hover {
+          color: rgb(241, 241, 241);
+        }
+        .nav-btn {
+          font-size: 1vw;
+          padding: 8px 10px;
+        }
+        .nav-btn.sign-in {
+          margin-left: 10px;
+        }
     </style>
     @stack("css")
 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
         <a href="/" class="navbar-brand" style="font-size:1.75vw">CSKU GRADER</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
@@ -46,29 +68,30 @@
           <!-- Left Side Of Navbar -->
           <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-              <a class="nav-link" href="/problems" style="font-size:1.25vw">Problems</a>
+              <a class="nav-link" href="/problems" style="font-size:1vw">Problems</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/scoreboard" style="font-size:1.25vw">Scoreboard</a>
+              <a class="nav-link" href="/scoreboard" style="font-size:1vw">Scoreboard</a>
             </li>
             @if (Auth::check())
             <li class="nav-item">
-              <a class="nav-link" href="/submissions" style="font-size:1.25vw">Submissions</a>
+              <a class="nav-link" href="/submissions" style="font-size:1vw">Submissions</a>
             </li>
             @endif
             @if (Auth::check() and Auth::user()->type == "admin")
             <li class="nav-item">
-              <a class="nav-link" href="/users" style="font-size:1.25vw">Users</a>
+              <a class="nav-link" href="/users" style="font-size:1vw">Users</a>
             </li>
             @endif
           </ul>
           @if(Auth::check())
           <form action="/logout" method="POST" style="margin: 0px">
             @csrf
-            <button class="btn btn-link" value="submit" style="font-size:1.25vw; color:red">SIGN OUT</button>
+            <button class="btn btn-danger nav-btn" value="submit">SIGN OUT</button>
           </form>
           @else
-          <a href="/login" class="btn btn-link" style="font-size:1.25vw">SIGN IN</a>
+          <a href="/register" class="btn btn-danger nav-btn">Register</a>
+          <a href="/login" class="btn btn-primary nav-btn sign-in">SIGN IN</a>
           @endif
         </div>
       </div>
