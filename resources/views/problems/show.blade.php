@@ -32,7 +32,7 @@
 <div class="row">
     <div class="col-12">
         <embed
-            src="https://core.ac.uk/download/pdf/82147433.pdf"
+            src="{{ '/pdf' . '/' . $problem -> id . '/' . $problem -> pdf_path }}"
             style="width:100%; height:650px;"
             frameborder="0"
         >
