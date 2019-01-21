@@ -40,7 +40,7 @@ class SubmissionsController extends Controller
         $lang = $request->input('language');
 
         $validatedData = $request->validate([
-            'codeFile' => 'required|mimes:c,cpp,java',
+            'codeFile' => 'required|mimes:'.$lang,
         ]);
 
         $codeFile = $request->file('codeFile');
