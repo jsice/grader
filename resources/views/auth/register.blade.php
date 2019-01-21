@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('master')
+
+@section('title')
+Registeration
+@endsection
 
 @section('content')
 <div class="container">
@@ -24,7 +28,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label for="std_id" class="col-md-4 col-form-label text-md-right">{{ __('Student ID') }}</label>
 
+                            <div class="col-md-6">
+                                <input id="std_id" type="text" class="form-control{{ $errors->has('std_id') ? ' is-invalid' : '' }}" name="std_id" value="{{ old('std_id') }}" required autofocus>
+
+                                @if ($errors->has('std_id'))
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('std_id') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
