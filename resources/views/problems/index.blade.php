@@ -31,6 +31,7 @@ Problems
           <th scope="col">#</th>
           <th scope="col">Name</th>
           @if (Auth::check() and Auth::user()->type == "admin")
+            <th scope="col">Created At</th>
             <th scope="col">Status</th>
           @else
             <th scope="col">Submission</th>
@@ -45,6 +46,7 @@ Problems
               <td>
                 <a href="{{ 'problems/' . $problem -> id }}">{{ $problem -> name }}</a>
               </td>
+              <td scope="row">{{ $problem -> created_at }}</td>
               <td>
                 <div class="custom-control custom-radio custom-control-inline">
                   <input type="radio" class="custom-control-input" name="{{ 'status-' . $problem -> id }}" id="{{ 'show-' . $problem -> id }}" value="show">
