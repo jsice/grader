@@ -66,4 +66,10 @@ class ProblemsController extends Controller
     public function update(){
 
     }
+
+    public function updateStatus(Request $request, $id){
+        $problem = Problem::findOrFail($id);
+        $problem->status = $request->input('status');
+        $problem->save();
+    }
 }
