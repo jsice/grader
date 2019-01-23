@@ -32,7 +32,7 @@ class SendToJudge implements ShouldQueue
      */
     public function handle()
     {
-        $host = "127.0.0.1"; 
+        $host = "0.0.0.0"; 
         $port = 13500;
         $data = $this->id;
 
