@@ -25,6 +25,7 @@ Route::get('/problems/{id}', 'ProblemsController@show');
 Route::post('/problems', 'ProblemsController@store')->middleware(['auth', 'is_admin']);
 Route::get('/problems/{id}/edit', 'ProblemsController@edit')->middleware(['auth', 'is_admin']);
 Route::put('/problems/{id}', 'ProblemsController@update')->middleware(['auth', 'is_admin']);
+Route::put('/problems/{id}/status', 'ProblemsController@updateStatus')->middleware(['auth', 'is_admin']);
 Route::delete('/problems/{id}', 'ProblemsController@destroy')->middleware(['auth', 'is_admin']);
 
 Route::get('/scoreboard', 'ScoreboardController@index');
