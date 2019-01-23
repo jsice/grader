@@ -83,7 +83,7 @@
       Language
     </div>
     <div class="col-9">
-      {{ $submission->language }}
+      {{ ucfirst($submission->language) }}
     </div>
   </div>
   <div class="row">
