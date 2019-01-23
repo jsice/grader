@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Problem;
 use App\Submission;
 use Illuminate\Support\Facades\Auth;
-use App\Jobs\RunCode;
+use App\Jobs\SendToJudge;
 
 class SubmissionsController extends Controller
 {
@@ -40,7 +40,7 @@ class SubmissionsController extends Controller
         $lang = $request->input('language');
 
         $validatedData = $request->validate([
-            'codeFile' => 'required|mimes:'.$lang,
+            'codeFile' => 'required|mimes:java,c,cpp',
         ]);
 
         $codeFile = $request->file('codeFile');
@@ -59,8 +59,8 @@ class SubmissionsController extends Controller
         $destinationPath = 'submissions';
         $codeFile->storeAs($destinationPath, $fileName);
 
-        RunCode::dispatch($submission);
-
+        // RunCode::dispatch($submission);
+        SendToJudge::dispatch($submission->id);
         return redirect('submissions');
     }
     
