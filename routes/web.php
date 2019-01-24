@@ -20,8 +20,8 @@ Route::redirect('/', '/problems');
 Auth::routes();
 
 Route::get('/problems/create', 'ProblemsController@create')->middleware(['auth', 'is_admin']);
-Route::get('/problems', 'ProblemsController@index');
-Route::get('/problems/{id}', 'ProblemsController@show');
+Route::get('/problems', 'ProblemsController@index')->middleware(['problem']);;
+Route::get('/problems/{id}', 'ProblemsController@show')->middleware(['problem']);
 Route::post('/problems', 'ProblemsController@store')->middleware(['auth', 'is_admin']);
 Route::get('/problems/{id}/edit', 'ProblemsController@edit')->middleware(['auth', 'is_admin']);
 Route::put('/problems/{id}', 'ProblemsController@update')->middleware(['auth', 'is_admin']);
@@ -36,8 +36,8 @@ Route::post('/users', 'UsersController@store');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show')->middleware(['auth', 'is_admin']);
-Route::get('/problems/{id}/submit', 'SubmissionsController@create');
-Route::post('/problems/{id}/submit', 'SubmissionsController@store');
+Route::get('/problems/{id}/submit', 'SubmissionsController@create')->middleware(['auth', 'problem']);
+Route::post('/problems/{id}/submit', 'SubmissionsController@store')->middleware(['auth', 'problem']);
 Route::get('/submissions/{id}/edit', 'SubmissionsController@edit')->middleware(['auth', 'is_admin']);
 Route::put('/submissions/{id}', 'SubmissionsController@update')->middleware(['auth', 'is_admin']);
 
