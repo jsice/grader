@@ -20,7 +20,7 @@ Route::redirect('/', '/problems');
 Auth::routes();
 
 Route::get('/problems/create', 'ProblemsController@create')->middleware(['auth', 'is_admin']);
-Route::get('/problems', 'ProblemsController@index')->middleware(['problem']);;
+Route::get('/problems', 'ProblemsController@index');
 Route::get('/problems/{id}', 'ProblemsController@show')->middleware(['problem']);
 Route::post('/problems', 'ProblemsController@store')->middleware(['auth', 'is_admin']);
 Route::get('/problems/{id}/edit', 'ProblemsController@edit')->middleware(['auth', 'is_admin']);

@@ -16,10 +16,10 @@ class SeeProblem
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user()->type == 'admin') {
+        if ($request->user() && $request->user()->type == 'admin') {
             return $next($request);
         } else {
-            $problem = Problem::where('id', $request->route('id'))->get();
+            $problem = Problem::where('id', $request->route('id'))->first();
             if ($problem->status == 'show') {
                 return $next($request);
             }
