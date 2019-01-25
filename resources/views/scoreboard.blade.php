@@ -11,13 +11,13 @@ Scoreboard
     <table class="table table-hover">
       <thead>
         <tr class="table-dark">
-            <th class="text-center">Rank</th>
-            <th class="text-center">ID</th>
-            <th class="text-center">Name</th>
+            <th>Rank</th>
+            <th>ID</th>
+            <!-- <th>Name</th> -->
             @foreach($problems as $problem)
-            <th class="text-center">{{ $problem->name }}</th>
+            <th>{{ $problem->name }}</th>
             @endforeach
-            <th class="text-center">Total</th>
+            <th>Total</th>
         </tr>
         </thead>
         <tbody>
@@ -29,21 +29,23 @@ Scoreboard
             $user = \App\User::where('id',$key)->first();
           ?>
           <tr>
-            <td score="row" class="text-center"><h5>{{ $rank }}</h5></td>
-            <td scope="row" class="text-center"><h6>{{ $user->std_id }}</h6></td>
-            <td scope="row"><h6>{{ $user->name }}</h6></td>
+            <td score="row"><h5>{{ $rank }}</h5></td>
+            <td scope="row"><h6>{{ $user->std_id }}</h6></td>
+            <!-- <td scope="row"><h6>{{ $user->name }}</h6></td> -->
             @foreach($scores as $key => $score)
-              <td scope="row" class="text-center">
+              <td scope="row">
               @if ($key == "total")
                 <h5>{{$score}}</h5>
               @else
+                <h5>
                 @if ($score == -1)
-                <h5>-</h5>
+                -
                 @elseif ($score == 0)
-                <img src="icons/wrong.png" />
+                <i class="far fa-times-circle text-danger"></i>
                 @elseif ($score == 1)
-                <img src="icons/correct.png" />
+                <i class="far fa-check-circle text-success"></i>
                 @endif
+                </h5>
               @endif
               </td>
             @endforeach

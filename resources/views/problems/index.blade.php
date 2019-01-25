@@ -11,6 +11,9 @@ Problems
             height: 50px;
             width: 130px;
         }
+        .far {
+            font-size: 2rem;
+        }
     </style>
 @endpush
 @section('title-button')
@@ -83,7 +86,7 @@ Problems
                 <td>
                   <a href="{{ 'problems/' . $problem -> id }}">{{ $problem -> name }}</a>
                 </td>
-                <td style="{{ 'color: ' . $color . ';' }}">{{ $status }}</td>
+                <td style="{{ 'color: ' . $color . ';' }}"><h5>@if ($status == "YES") <i class="far fa-check-circle text-success"></i> @elseif($status == "NO") <i class="far fa-times-circle text-danger"></i> @else - @endif</h5></td>
               </tr>
             @endif
           @endforeach
@@ -95,7 +98,7 @@ Problems
                 <td>
                   <a href="{{ 'problems/' . $problem -> id }}">{{ $problem -> name }}</a>
                 </td>
-                <td style="{{ 'color: ' . $color . ';' }}">{{ $status }}</td>
+                <td style="{{ 'color: ' . $color . ';' }}"><h5>@if ($status == "YES") <i class="far fa-check-circle text-success"></i> @elseif($status == "NO") <i class="far fa-times-circle text-danger"></i> @else - @endif</h5></td>
               </tr>
             @endif
           @endforeach

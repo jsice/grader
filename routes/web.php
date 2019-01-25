@@ -61,6 +61,25 @@ Route::get('pdf/{folder}/{filename}', function ($folder, $filename)
 
 });
 
+
+Route::get('code/{id}', function ($id)
+{
+    $submission = \App\Submission::where('id', $id)->first();
+    $path = storage_path('app\\submissions\\'.$submission->file_path);
+    if (!File::exists($path)) {
+        abort(404);
+    }
+    $file = File::get($path);
+    $type = File::mimeType($path);
+
+    $response = Response::make($file, 200);
+    $response->header("Content-Type", $type);
+
+    return $response;
+
+
+})->middleware(['auth', 'is_admin']);
+
 Route::get('{folder}/{filename}', function ($folder, $filename)
 {
     $path = storage_path('app/public/'.$folder.'/' . $filename);
@@ -77,4 +96,5 @@ Route::get('{folder}/{filename}', function ($folder, $filename)
 
 
 });
+
 

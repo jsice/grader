@@ -4,12 +4,13 @@
 @endsection
 @push('css')
     <style>
-        .edit {
+        .edit, .code {
           font-size: 18px;
           border-radius: 5px;
           line-height: 33px;
           height: 50px;
           width: 120px;
+          margin-left:10px;
         }
         .col-2, .col-3, .col-9 {
           padding-top: 10px;
@@ -27,8 +28,11 @@
 @endpush
 @section('title-button')
   @if (Auth::check() and Auth::user()->type == "admin")
+    <a type="role" class="btn btn-danger code" href="{{ '/code/' . $submission -> id }}" target="_blank">
+      <i class="fas fa-code"></i>{{" Code"}}
+    </a>
     <a type="role" class="btn btn-info edit" href="{{ '/submissions/' . $submission -> id . '/edit' }}">
-        <i class="fa fa-edit"></i>{{" Edit"}}
+      <i class="fa fa-edit"></i>{{" Edit"}}
     </a>
   @endif
 @endsection

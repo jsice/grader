@@ -16,7 +16,11 @@
       @foreach ($submissions as $submission)
         <tr>
           <td scope="row">
-            <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
+            @if (Auth::check() and Auth::user()->type == "admin")
+              <a href="{{ 'submissions/' . $submission -> id }}">{{ $submission -> id }}</a>
+            @else
+              {{ $submission -> id }}
+            @endif
           </td>
           <td>
             <a href="{{ './problems/' . $submission -> problem_id }}">{{ $submission -> problem -> name }}</a>

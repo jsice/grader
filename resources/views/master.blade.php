@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous" />
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="{{ asset('js/admin.js') }}"></script>
-    <script type="text/javascript" src="{{ asset('js/filter.js')}}"></script>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
@@ -22,10 +20,9 @@
         main {
             margin-top: 30px;
         }
-        .col-2.title-button {
+        .col-4.title-button {
           display: flex;
           justify-content: flex-end;
-          align-items: center;
         }
         .btn {
           border-radius: 5px;
@@ -62,7 +59,7 @@
       <div class="container">
         <a href="/" class="navbar-brand" style="font-size:1.75vw">CSKU GRADER</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"><i class="fas fa-bars text-white"></i></span>
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor03">
@@ -100,10 +97,10 @@
     <main class="container-fluid">
       <div class="container">
         <div class="row">
-          <div class="col-10">
+          <div class="col-8">
             <h3 class="display-4">@yield("title")</h3>
           </div>
-          <div class="col-2 title-button">
+          <div class="col-4 title-button">
             @yield("title-button")
           </div>
         </div>
@@ -113,6 +110,7 @@
         </div>
       </div>
     </main>
+    <div  id="app"></div>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
     @stack("js")
