@@ -32,4 +32,15 @@ class UsersController extends Controller
         $user->save();
         return redirect('/users');
     }
+
+    public function setStdID(Request $request)
+    {
+        $validatedData = $request->validate([
+            'std_id' => 'required|regex:(5[2-9]|6[0-1])104(5|0)[0-9]{4}',
+        ]);
+        $user = Auth::user();
+        $user->std_id = $request->input('std_id');
+        $user->save();
+        return redirect('/users');
+    }
 }

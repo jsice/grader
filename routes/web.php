@@ -38,14 +38,12 @@ Route::get('/scoreboard', 'ScoreboardController@index');
 
 Route::get('/users', 'UsersController@index');
 Route::get('/profile', 'UsersController@show')->middleware(['auth']);
-Route::get('/users/create', 'UsersController@create');
-Route::post('/users', 'UsersController@store');
 Route::put('/users/{id}', 'UsersController@update');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show')->middleware(['auth', 'is_admin']);
-Route::get('/problems/{id}/submit', 'SubmissionsController@create')->middleware(['auth', 'problem']);
-Route::post('/problems/{id}/submit', 'SubmissionsController@store')->middleware(['auth', 'problem']);
+Route::get('/problems/{id}/submit', 'SubmissionsController@create')->middleware(['auth', 'problem', 'check_std_id']);
+Route::post('/problems/{id}/submit', 'SubmissionsController@store')->middleware(['auth', 'problem', 'check_std_id']);
 Route::get('/submissions/{id}/edit', 'SubmissionsController@edit')->middleware(['auth', 'is_admin']);
 Route::put('/submissions/{id}', 'SubmissionsController@update')->middleware(['auth', 'is_admin']);
 
@@ -87,22 +85,5 @@ Route::get('code/{id}', function ($id)
 
 
 })->middleware(['auth', 'is_admin']);
-
-Route::get('{folder}/{filename}', function ($folder, $filename)
-{
-    $path = storage_path('app/public/'.$folder.'/' . $filename);
-    if (!File::exists($path)) {
-        abort(404);
-    }
-    $file = File::get($path);
-    $type = File::mimeType($path);
-
-    $response = Response::make($file, 200);
-    $response->header("Content-Type", $type);
-
-    return $response;
-
-
-});
 
 

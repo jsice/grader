@@ -76,10 +76,10 @@ Create Problem
         </div>
         <div class="col-12 row">
           <div class="col-6" style="margin-right: 15px">
-            <small id="inputFiles" class="text-muted">t</small>
+            <small id="inputFiles" class="text-muted"></small>
           </div>
           <div class="col-6">
-            <small id="outputFiles" class="text-muted">t</small>
+            <small id="outputFiles" class="text-muted"></small>
           </div>
         </div>
         <div class="col-12 row" style="padding: 0;">
