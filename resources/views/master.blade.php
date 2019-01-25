@@ -83,6 +83,7 @@
             @endif
           </ul>
           @if(Auth::check())
+          <a class="btn btn-primary nav-btn" href="/profile" style="margin-right: 10px">Profile</a>
           <form action="/logout" method="POST" style="margin: 0px">
             @csrf
             <button class="btn btn-danger nav-btn" value="submit">SIGN OUT</button>

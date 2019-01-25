@@ -17,7 +17,13 @@
 
 Route::redirect('/', '/problems');
 
-Auth::routes();
+Route::get('/login', 'GoogleAuthController@redirect');
+Route::get('/callback', 'GoogleAuthController@callback');
+
+Route::post('/logout', 'Auth\LoginController@logout');
+  
+
+// Auth::routes();
 
 Route::get('/problems/create', 'ProblemsController@create')->middleware(['auth', 'is_admin']);
 Route::get('/problems', 'ProblemsController@index');
@@ -31,8 +37,10 @@ Route::delete('/problems/{id}', 'ProblemsController@destroy')->middleware(['auth
 Route::get('/scoreboard', 'ScoreboardController@index');
 
 Route::get('/users', 'UsersController@index');
+Route::get('/profile', 'UsersController@show')->middleware(['auth']);
 Route::get('/users/create', 'UsersController@create');
 Route::post('/users', 'UsersController@store');
+Route::put('/users/{id}', 'UsersController@update');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show')->middleware(['auth', 'is_admin']);

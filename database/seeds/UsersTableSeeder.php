@@ -13,10 +13,11 @@ class UsersTableSeeder extends Seeder
     {
         $admin = new App\User;
         $admin->password = bcrypt('adminpassword');
-        $admin->name = 'Wiwadh Chinanuphandh';
+        $admin->name = 'Wiwadh CHINANUPHANDH';
         $admin->email = 'wiwadh.c@ku.th';
         $admin->type = 'admin';
         $admin->std_id = '5810400051';
+        $admin->google_id = '112460300274176869899';
         $admin->save();
     }
 }

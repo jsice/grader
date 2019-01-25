@@ -46,6 +46,7 @@ All Users
         <th>Name</th>
         <th>ID</th>
         <th>E-Mail</th>
+        <th></th>
     </tr>
     </thead>
     <tbody>
@@ -55,6 +56,13 @@ All Users
         <td>{{ $student->name }}</td>
         <td>{{ $student->std_id }}</td>
         <td>{{ $student->email }}</td>
+        <td>
+            <form method="post" action="/users/{{ $student->id }}">
+            @method('PUT')
+            @csrf
+            <button type="submit" class="btn btn-success">Promote</button>
+            </form>
+        </td>
         </tr>
     @endforeach
     </tbody>
