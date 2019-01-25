@@ -9,7 +9,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'is_admin'], ['except' => ['show', 'setStdID']]);
+        $this->middleware(['auth']);
     }
 
     public function index()
@@ -27,6 +27,7 @@ class UsersController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->middleware(['is_admin']);
         $user = User::findOrFail($id);
         $user->type = 'admin';
         $user->save();

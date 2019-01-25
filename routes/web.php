@@ -36,9 +36,10 @@ Route::delete('/problems/{id}', 'ProblemsController@destroy')->middleware(['auth
 
 Route::get('/scoreboard', 'ScoreboardController@index');
 
-Route::get('/users', 'UsersController@index');
-Route::get('/profile', 'UsersController@show')->middleware(['auth']);
-Route::put('/profile', 'UsersController@update');
+Route::get('/users', 'UsersController@index')->middleware('is_admin');
+Route::get('/profile', 'UsersController@show');
+Route::put('/users/{id}', 'UsersController@update')->middleware('is_admin');
+Route::put('/profile', 'UsersController@setStdID');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show')->middleware(['auth', 'is_admin']);
