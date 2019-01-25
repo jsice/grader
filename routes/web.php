@@ -38,7 +38,7 @@ Route::get('/scoreboard', 'ScoreboardController@index');
 
 Route::get('/users', 'UsersController@index');
 Route::get('/profile', 'UsersController@show')->middleware(['auth']);
-Route::put('/users/{id}', 'UsersController@update');
+Route::put('/profile', 'UsersController@update');
 
 Route::get('/submissions', 'SubmissionsController@index');
 Route::get('/submissions/{id}', 'SubmissionsController@show')->middleware(['auth', 'is_admin']);
