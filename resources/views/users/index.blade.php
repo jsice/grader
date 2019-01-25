@@ -6,13 +6,8 @@ All Users
 
 @section('content')
 <div class="row">
-    <div class="col-10">
+    <div class="col-12">
         <h3 class="display-4" style="font-size: 2.5rem;">Admin</h3>
-    </div>
-    <div class="col-2 title-button">
-        <a type="role" class="btn btn-success add-problem" href="users/create">
-            <i class="fa fa-plus"></i> Admin
-        </a>
     </div>
 </div>
 <table class="table table-hover">
