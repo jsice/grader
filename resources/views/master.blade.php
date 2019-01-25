@@ -89,7 +89,6 @@
             <button class="btn btn-danger nav-btn" value="submit">SIGN OUT</button>
           </form>
           @else
-          <a href="/register" class="btn btn-danger nav-btn">Register</a>
           <a href="/login" class="btn btn-primary nav-btn sign-in">Sign In</a>
           @endif
         </div>
