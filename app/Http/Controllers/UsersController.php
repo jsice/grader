@@ -9,7 +9,7 @@ class UsersController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'is_admin'], ['except' => ['show']]);
+        $this->middleware(['auth', 'is_admin'], ['except' => ['show', 'setStdID']]);
     }
 
     public function index()
