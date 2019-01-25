@@ -41,6 +41,6 @@ class UsersController extends Controller
         $user = Auth::user();
         $user->std_id = $request->input('std_id');
         $user->save();
-        return redirect('/users');
+        return redirect('/profile');
     }
 }
