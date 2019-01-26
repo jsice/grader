@@ -2,6 +2,7 @@
 @push('css')
     <style>
         .btn.btn-info.title-submit,
+        .btn.btn-danger.title-delete,
         .btn.btn-info.btn-block {
             font-size: 18px;
             border-radius: 5px;
@@ -11,7 +12,7 @@
             height: 80px;
             padding: 15px 15px;
         }
-        .btn.btn-info.title-submit {
+        .btn.btn-info.title-submit,.btn.btn-danger.title-delete {
             height: 50px;
             width: 120px;
         }
@@ -24,6 +25,13 @@
     {{ $problem -> name }}
 @endsection
 @section('title-button')
+    @if (Auth::user()->type == 'admin')
+    <form method="POST" action="/problems/{{ $problem->id }}">
+        @method('DELETE')
+        @csrf
+        <button class="btn btn-danger title-delete" style="margin-right:10px" value="submit"><i class="far fa-trash-alt"></i> Delete</button>
+    </form>
+    @endif
     <a type="role" class="btn btn-info title-submit" href="{{ $problem -> id . '/submit' }}">
         <i class="fa fa-upload"></i>{{" Submit"}}
     </a>

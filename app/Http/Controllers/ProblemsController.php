@@ -63,8 +63,10 @@ class ProblemsController extends Controller
         return redirect('problems/' . $problem->id);
     }
 
-    public function update(){
-
+    public function destroy($id){
+        $problem = Problem::findOrFail($id);
+        $problem->delete();
+        return redirect('/problems');
     }
 
     public function updateStatus(Request $request, $id){
