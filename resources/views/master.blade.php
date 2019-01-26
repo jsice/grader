@@ -97,10 +97,10 @@
     <main class="container-fluid">
       <div class="container">
         <div class="row">
-          <div class="col-8">
+          <div class="col-6">
             <h3 class="display-4">@yield("title")</h3>
           </div>
-          <div class="col-4 title-button">
+          <div class="col-6 title-button">
             @yield("title-button")
           </div>
         </div>
