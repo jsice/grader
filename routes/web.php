@@ -17,10 +17,10 @@
 
 Route::redirect('/', '/problems');
 
-Route::get('/login', 'GoogleAuthController@redirect');
+Route::get('/login', 'GoogleAuthController@redirect')->name('login');;
 Route::get('/callback', 'GoogleAuthController@callback');
 
-Route::post('/logout', 'Auth\LoginController@logout');
+Route::post('/logout', 'Auth\LoginController@logout')->name('logout');;
   
 
 // Auth::routes();
