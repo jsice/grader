@@ -31,7 +31,7 @@
     <form method="POST" action="{{ '/submissions/' . $submission -> id . '/rejudge' }}" style="display: inline-block;">
       @method('PUT')
       @csrf
-      <button class="btn btn-success rejudge" value="submit"><i class="fas fa-redo-alt"></i>{{" Re-Judge"}}</button>
+      <button class="btn btn-success rejudge" value="submit"><i class="fas fa-redo-alt"></i>{{" Judge"}}</button>
     </form>
     <a type="role" class="btn btn-danger code" href="{{ '/code/' . $submission -> id }}" target="_blank">
       <i class="fas fa-code"></i>{{" Code"}}

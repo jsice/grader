@@ -87,6 +87,7 @@ class SubmissionsController extends Controller
     public function rejudge(Request $request, $id)
     {
         $submission = Submission::findOrFail($id);
+        $submission->status = "PENDING";
         SendToJudge::dispatch($submission->id);
         return redirect('submissions/'.$id);
     }
