@@ -88,6 +88,7 @@ class SubmissionsController extends Controller
     {
         $submission = Submission::findOrFail($id);
         $submission->status = "PENDING";
+        $submission->save();
         SendToJudge::dispatch($submission->id);
         return redirect('submissions/'.$id);
     }
