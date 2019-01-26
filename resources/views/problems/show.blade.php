@@ -25,7 +25,7 @@
     {{ $problem -> name }}
 @endsection
 @section('title-button')
-    @if (Auth::user()->type == 'admin')
+    @if (Auth::check() && Auth::user()->type == 'admin')
     <form method="POST" action="/problems/{{ $problem->id }}">
         @method('DELETE')
         @csrf
