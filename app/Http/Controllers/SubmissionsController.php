@@ -83,4 +83,11 @@ class SubmissionsController extends Controller
         $submission->save();
         return redirect('submissions/'.$submission->id);
     }
+
+    public function rejudge(Request $request, $id)
+    {
+        $submission = Submission::findOrFail($id);
+        SendToJudge::dispatch($submission->id);
+        return redirect('submissions/'.$id);
+    }
 }

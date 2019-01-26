@@ -4,7 +4,7 @@
 @endsection
 @push('css')
     <style>
-        .edit, .code {
+        .edit, .code, .rejudge {
           font-size: 18px;
           border-radius: 5px;
           line-height: 33px;
@@ -28,6 +28,11 @@
 @endpush
 @section('title-button')
   @if (Auth::check() and Auth::user()->type == "admin")
+    <form method="POST" action="{{ '/submissions/' . $submission -> id . '/rejudge' }}">
+      @method('PUT')
+      @csrf
+      <button class="btn btn-success rejudge" value="submit"><i class="fas fa-redo-alt"></i>{{" Re-Judge"}}</button>
+    </form>
     <a type="role" class="btn btn-danger code" href="{{ '/code/' . $submission -> id }}" target="_blank">
       <i class="fas fa-code"></i>{{" Code"}}
     </a>

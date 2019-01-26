@@ -47,6 +47,7 @@ Route::get('/problems/{id}/submit', 'SubmissionsController@create')->middleware(
 Route::post('/problems/{id}/submit', 'SubmissionsController@store')->middleware(['auth', 'problem', 'check_std_id']);
 Route::get('/submissions/{id}/edit', 'SubmissionsController@edit')->middleware(['auth', 'is_admin']);
 Route::put('/submissions/{id}', 'SubmissionsController@update')->middleware(['auth', 'is_admin']);
+Route::put('/submissions/{id}/rejudge', 'SubmissionsController@rejudge')->middleware(['auth', 'is_admin']);
 
 Route::get('pdf/{folder}/{filename}', function ($folder, $filename)
 {
