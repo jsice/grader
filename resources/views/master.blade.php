@@ -20,7 +20,7 @@
         main {
             margin-top: 30px;
         }
-        .col-4.title-button {
+        .col-5.title-button {
           display: flex;
           justify-content: flex-end;
         }

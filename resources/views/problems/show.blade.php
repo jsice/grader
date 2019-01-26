@@ -26,7 +26,7 @@
 @endsection
 @section('title-button')
     @if (Auth::user()->type == 'admin')
-    <form method="POST" action="/problems/{{ $problem->id }}" style="display: inline-block">
+    <form method="POST" action="/problems/{{ $problem->id }}">
         @method('DELETE')
         @csrf
         <button class="btn btn-danger title-delete" style="margin-right:10px" value="submit"><i class="far fa-trash-alt"></i> Delete</button>
