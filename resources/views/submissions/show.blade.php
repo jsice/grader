@@ -28,7 +28,7 @@
 @endpush
 @section('title-button')
   @if (Auth::check() and Auth::user()->type == "admin")
-    <form method="POST" action="{{ '/submissions/' . $submission -> id . '/rejudge' }}">
+    <form method="POST" action="{{ '/submissions/' . $submission -> id . '/rejudge' }}" style="display: inline-block;">
       @method('PUT')
       @csrf
       <button class="btn btn-success rejudge" value="submit"><i class="fas fa-redo-alt"></i>{{" Re-Judge"}}</button>
