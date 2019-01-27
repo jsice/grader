@@ -8,7 +8,7 @@ class ScoreboardController extends Controller
 {
     public function index() {
         $users = \App\User::where('type', 'student')->get();
-        $problems = \App\Problem::where('status', '!=', 'unused')->get();
+        $problems = \App\Problem::all();
         $submissions = \App\Submission::where('status', 'YES')->get();
         $submissions_no = \App\Submission::whereIn('status', array('NO:TimeLimitExceeded', 'NO:CompilationError', 'NO:RunTimeError', 'NO:WrongAnswer', 'NO:ContactTA'))->get();
         $scoreboard = array();
