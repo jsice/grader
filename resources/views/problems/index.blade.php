@@ -59,6 +59,10 @@ Problems
                   <input type="radio" class="custom-control-input" name="{{ 'status-' . $problem -> id }}" id="{{ 'hide-' . $problem -> id }}" value="hide">
                   <label class="custom-control-label" for="{{ 'hide-' . $problem -> id }}">Hide</label>
                 </div>
+                <div class="custom-control custom-radio custom-control-inline">
+                  <input type="radio" class="custom-control-input" name="{{ 'status-' . $problem -> id }}" id="{{ 'unused-' . $problem -> id }}" value="unused">
+                  <label class="custom-control-label" for="{{ 'unused-' . $problem -> id }}">Unused</label>
+                </div>
               </td>
             </tr>
           @endforeach
