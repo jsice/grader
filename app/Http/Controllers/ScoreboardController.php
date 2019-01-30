@@ -48,11 +48,14 @@ class ScoreboardController extends Controller
             }
         }
         uasort($scoreboard, function($item1, $item2) {
+            if ($item2['total'] <=> $item1['total']) {
+                return $item2['total'] <=> $item1['total'];
+            }
             return $item1['time'] <=> $item2['time'];
         });
-        uasort($scoreboard, function($item1, $item2) {
-            return $item2['total'] <=> $item1['total'];
-        });
+        // uasort($scoreboard, function($item1, $item2) {
+        //     return $item2['total'] <=> $item1['total'];
+        // });
         foreach ($scoreboard as $key => $value) {
           unset($scoreboard[$key]['time']);
         }
