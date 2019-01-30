@@ -53,9 +53,6 @@ class ScoreboardController extends Controller
             }
             return $item1['time'] <=> $item2['time'];
         });
-        // uasort($scoreboard, function($item1, $item2) {
-        //     return $item2['total'] <=> $item1['total'];
-        // });
         foreach ($scoreboard as $key => $value) {
           unset($scoreboard[$key]['time']);
         }
