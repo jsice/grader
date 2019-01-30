@@ -30,7 +30,7 @@ Scoreboard
           ?>
           <tr>
             <td score="row"><h5>{{ $rank }}</h5></td>
-            <td scope="row"><h6 {{ (Auth::check() and Auth::user()->type == 'admin') ? "title='".$user->email."'" : ""}} >{{ $user->std_id }}</h6></td>
+            <td scope="row"><h6 {{ (Auth::check() and Auth::user()->type == 'admin') ? "title=".$user->email : ""}} >{{ $user->std_id }}</h6></td>
             <!-- <td scope="row"><h6>{{ $user->name }}</h6></td> -->
             @foreach($scores as $key => $score)
               <td scope="row">
