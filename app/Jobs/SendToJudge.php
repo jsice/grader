@@ -52,6 +52,6 @@ class SendToJudge implements ShouldQueue
         }
 
         echo "`$data` is sent to server successfully!\n";
-        flush();
+        ob_clean();
     }
 }
