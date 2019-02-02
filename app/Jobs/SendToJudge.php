@@ -34,8 +34,8 @@ class SendToJudge implements ShouldQueue
     {
         $host = "127.0.0.1"; 
         $port = 13500;
-        $data = $this->id;
-        if(!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
+        $data = "".$this->id;
+        if(!($sock = socket_create(AF_INET, SOCK_DGRAM, SOL_UDP))) {
             $error_code = $socket_last_error();
             $error_msg = socket_strerror($error_code);
             echo "Couldn't create socket: [$error_code] $error_msg";
@@ -44,7 +44,7 @@ class SendToJudge implements ShouldQueue
 
         echo "Socket created\n";
 
-        if (!socket_sendto($sock, "$data", strlen("$data"), 0, $host, $port)) {
+        if (!socket_sendto($sock, $data, strlen($data), 0, $host, $port)) {
             $error_code = $socket_last_error();
             $error_msg = socket_strerror($error_code);
             echo "Couldn't send `$data` to socket: [$error_code] $error_msg";
@@ -52,6 +52,5 @@ class SendToJudge implements ShouldQueue
         }
 
         echo "`$data` is sent to server successfully!\n";
-        ob_clean();
     }
 }
