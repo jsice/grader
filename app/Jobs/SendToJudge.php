@@ -52,5 +52,6 @@ class SendToJudge implements ShouldQueue
         }
 
         echo "`$data` is sent to server successfully!\n";
+        socket_close($sock);
     }
 }
