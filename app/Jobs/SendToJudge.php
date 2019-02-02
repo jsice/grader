@@ -35,7 +35,6 @@ class SendToJudge implements ShouldQueue
         $host = "127.0.0.1"; 
         $port = 13500;
         $data = $this->id;
-
         if(!($sock = socket_create(AF_INET, SOCK_DGRAM, 0))) {
             $error_code = $socket_last_error();
             $error_msg = socket_strerror($error_code);
@@ -53,5 +52,6 @@ class SendToJudge implements ShouldQueue
         }
 
         echo "`$data` is sent to server successfully!\n";
+        flush();
     }
 }
