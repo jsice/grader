@@ -65,6 +65,10 @@ Problems
         @elseif (Auth::check() and Auth::user()->type == "student")
           @foreach ($problems as $problem)
             @if ($problem -> status === "show")
+              <?php
+                $color = "red";
+                $status = "NO";
+              ?>
               @foreach ($problem->submissions as $submission)
                 @if ($submission->user_id == Auth::user()->id)
                   @if ($submission->status == "YES")
