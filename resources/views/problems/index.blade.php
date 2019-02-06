@@ -66,8 +66,8 @@ Problems
           @foreach ($problems as $problem)
             @if ($problem -> status === "show")
               <?php
-                $color = "red";
-                $status = "NO";
+                $color = "-";
+                $status = "-";
               ?>
               @foreach ($problem->submissions as $submission)
                 @if ($submission->user_id == Auth::user()->id)
