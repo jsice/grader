@@ -4,6 +4,23 @@
 Scoreboard
 @endsection
 
+@section('title-button')
+<input class="form-control" id="filterInput" type="text" placeholder="Search..">
+@endsection
+
+@push('js')
+<script>
+$(document).ready(function(){
+  $("#filterInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#scoreboard tr").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
+@endpush
+
 @section('content')
   @if (count($scoreboard) == 0)
   <h3 class="display-5 text-muted text-center mt-5">- SCOREBOARD EMPTY -<h3>
@@ -20,7 +37,7 @@ Scoreboard
             <th>Total</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="scoreboard">
           <?php
             $rank = 1
           ?>

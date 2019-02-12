@@ -23,6 +23,7 @@
         .col-5.title-button {
           display: flex;
           justify-content: flex-end;
+          align-items: center;
         }
         .btn {
           border-radius: 5px;
