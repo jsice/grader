@@ -111,7 +111,7 @@
       {{ 'app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/runtimeError.txt' }}
       {{ file_get_contents(storage_path('app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/runtimeError.txt')) }}
     </textarea>
-  @elseif($submission->status == "NO:WrongAnser")
+  @elseif($submission->status == "NO:WrongAnswer")
     <textarea rows="5" cols="60" name="output">
       {{ 'app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/output.txt' }}
       {{ file_get_contents(storage_path('app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/output.txt')) }}
