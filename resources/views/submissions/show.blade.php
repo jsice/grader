@@ -107,11 +107,11 @@
     </div>
   </div>
   @if($submission->status == "NO:RunTimeError")
-    <textarea class="form-control" rows="5" cols="60" name="output">
+    <textarea class="form-control" rows="5" cols="60" name="output" readonly>
       {{ file_get_contents(storage_path('app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/runtimeError.txt')) }}
     </textarea>
   @elseif($submission->status == "NO:WrongAnswer")
-    <textarea class="form-control" rows="5" cols="60" name="output">
+    <textarea class="form-control" rows="5" cols="60" name="output" readonly>
       {{ file_get_contents(storage_path('app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/output.txt')) }}
     </textarea>
   @endif
