@@ -47,7 +47,9 @@ class SubmissionsController extends Controller
             }
             $submissions = $submissions->orderBy('id', 'DESC')->paginate(15);
         }
-        return view('submissions.index', compact('submissions', 'problems', 'users', 'status', 'params'));
+        return view('submissions.index', [
+            'submissions' => $submissions->appends(Input::except('page')), 'problems' => $problems, 'users' => $users, 'status' => $status, 'params' => $params
+        ]);
     }
     
     public function create($id)
