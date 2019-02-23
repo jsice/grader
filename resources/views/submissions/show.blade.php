@@ -106,4 +106,11 @@
       {{ $submission->created_at }}
     </div>
   </div>
+  <textarea rows="5" cols="60" name="output">
+  @if($submission->status == "NO:RunTimeError")
+    {{ file_get_contents(storage_path('app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/runtimeError.txt')) }}
+  @elseif($submission->status == "NO:WrongAnser")
+    {{ file_get_contents(storage_path('app/submissions/'.$submission->id.'_'.$submission->problem_id.'_'.$submission->user_id.'_'.$submission->sender->std_id.'/output.txt')) }}
+  @endif
+  </textarea>
 @endsection
