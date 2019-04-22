@@ -108,6 +108,7 @@
       <tr class="table-dark">
         <th scope="col">#</th>
         <th scope="col">Problem</th>
+        <th scope="col">Sender ID</th>
         <th scope="col">Sender</th>
         <th scope="col">Status</th>
       </tr>
@@ -125,6 +126,7 @@
           <td>
             <a href="{{ './problems/' . $submission -> problem_id }}">{{ $submission -> problem -> name }}</a>
           </td>
+          <td>{{ $submission -> sender -> std_id}}</td>
           <td>{{ $submission -> sender -> name}}</td>
           <td>{{ $submission -> status}}</td>
         </tr>

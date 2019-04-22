@@ -65,6 +65,17 @@
   <div class="row">
     <div class="col-3 label sender">
       <div style="width: 40px;">
+        <i class="fas fa-id-card"></i>
+      </div>
+      Sender ID
+    </div>
+    <div class="col-9">
+      {{ $submission->sender->std_id }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 label sender">
+      <div style="width: 40px;">
         <i class="fa fa-user"></i>
       </div>
       Sender
